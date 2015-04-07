@@ -1,6 +1,5 @@
 /** Methods to interact with nasa push lightstream server **/
-Meteor.NASA_API = {
-
+Meteor.methods({
   /* Obtain the session token */
   pushSession : function() {
     //this.unblock();
@@ -9,25 +8,30 @@ Meteor.NASA_API = {
                     { 'LS_adapter_set': 'PROXYTELEMETRY',
                       'LS_client_version': '5.0',
                       'LS_domain': 'nasa.gov' }};
-
-    /*HTTP.post(url, params, function(result){
-      console.log(result.content);
-      console.log(result.statusCode);
-      console.log(result.data);
-    });*/
-    
-    var result = HTTP.post(url, params);
-    console.log(result.content);
-    console.log(result.statusCode);
-    console.log(result.data);
+    var headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
+    HTTP.call("POST", url, params, headers, function(error, result){
+      if (error){
+        console.log(error);
+        //throw new Meteor.Error("season-error","There was an error obtaining the season token")
+      }else{
+        console.log(result);
+      }
+    });
+    // console.log(result.content);
+    // console.log(result.statusCode);
+    // console.log(result.data);
   },
-
   /* Pull down data using aforementioned token */
   sessionData : function() {
     //this.unblock();
-    HTTP.call("POST", "http://push1.jsc.nasa.gov:80/lightstreamer/control.txt", function(result){
-      console.log(result.content);
+    var url = "http://push1.jsc.nasa.gov:80/lightstreamer/control.txt";
+    HTTP.call("POST", url, function(error, result){
+      if (error){
+        console.log(error);
+        //throw new Meteor.Error("seasondata-error","There was an error obtaining the season data")
+      }else{
+        console.log(result.content);
+      }
     });
   }
-
-};
+});
