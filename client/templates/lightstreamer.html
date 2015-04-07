@@ -1,8 +1,44 @@
 <template name="lightstreamer">
-<tr>
-        <td nowrap class="greyClass"><div class="stockName" data-source="lightstreamer" data-grid="stocks" data-item="item2" data-field="stock_name">-</div></td>
-        <td class="greyClass"><div class="greyClass" data-source="lightstreamer" data-grid="stocks" data-item="item2" data-field="time">-</div></td>
-        <td class="greyClass"><div class="greyClass" data-source="lightstreamer" data-grid="stocks" data-item="item2" data-field="last_price">-</div></td>
-        <td class="greyClass"><div class="greyClass" data-source="lightstreamer" data-grid="stocks" data-item="item2" data-field="base_price" data-fieldtype="extra">-</div></td>
-      </tr>
+
+<table>
+	<tr>
+		<th></th>
+		<th>Position(km)</th>
+		<th>Velocity(m/s)</th>
+	</tr>
+	<tr>
+		<td>X</td>
+		<td id="USLAB000032"></td>
+		<td id="USLAB000035"></td>
+	</tr>
+	<tr>
+		<td>Y</td>
+		<td id="USLAB000033"></td>
+		<td id="USLAB000036"></td>
+	</tr>
+	<tr>
+		<td>Z</td>
+		<td id="USLAB000034"></td>
+		<td id="USLAB000037"></td>
+	</tr>
+</table>
+
+
+
+<script>
+require(["LightstreamerClient","Subscription"],function(LightstreamerClient,Subscription) {
+	var client = new LightstreamerClient("http://push.lightstreamer.com","ISSLIVE");
+	client.connect();
+	
+	var sub = new Subscription("MERGE",["USLAB000032","USLAB000035","USLAB000033","USLAB000036","USLAB000034","USLAB000037"],["Value"]);
+	client.subscribe(sub);
+	
+	sub.addListener({
+		onItemUpdate: function(update) {
+			$("#"+update.getItemName()).text(update.getValue("Value"));
+		}
+	});
+	
+});
+</script>
 </template>
