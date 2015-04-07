@@ -2,5 +2,6 @@
 <div id="cesiumContainer"></div>
   <script>
     var viewer = new Cesium.Viewer('cesiumContainer');
+    viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
   </script>
 </template>
