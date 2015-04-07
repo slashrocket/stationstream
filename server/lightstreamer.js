@@ -3,10 +3,10 @@
  * Lightstreamer JavaScript Client
  * Version 6.2.5 build 1669
  * Copyright (c) 2004-2015 Weswit Srl. All Rights Reserved.
- * Contains: LightstreamerClient, Subscription
- * AMD
+ * Contains: Lightstreamer/LightstreamerClient, Lightstreamer/Subscription
+ * AMD (simple AMD loader included)
  */
-(function(){function u(){return function(h){return h}}function F(){return function(){}}function H(h){return function(g){this[h]=g}}function M(h){return function(){return this[h]}}function V(h){return function(){return h}}
+function define(a,c,e){define.a[a]={e:c,d:e}}define.a={};define.b=function(a,c,e){for(var g=[],f=0;f<a.length;f++){var d=define.a[a[f]];if(!d)throw"All the modules must already be 'defined' Async load not supported: use a full-featured AMD loader like requirejs";d.c||define.b(d.e,d.d,a[f]);g.push(d.c)}a=c.apply(null,g);if(e)define.a[e].c=a};function require(a,c){define.b(a,c,null)};(function(o) {var l='Lightstreamer/';var define = function(c,a,d){for(var b=0;b<a.length;b++)a[b]=l+a[b];o(l+c,a,d)};function u(){return function(h){return h}}function F(){return function(){}}function H(h){return function(g){this[h]=g}}function M(h){return function(){return this[h]}}function V(h){return function(){return h}}
 define("IllegalStateException",[],function(){function h(g){this.name="IllegalStateException";this.message=g}h.prototype={toString:function(){return["[",this.name,this.message,"]"].join("|")}};return h});
 define("Environment",["IllegalStateException"],function(h){var g="undefined"!==typeof window&&navigator&&document,f="undefined"!==typeof importScripts,d="object"==typeof process&&(/node(\.exe)?$/.test(process.execPath)||process.node&&process.v8||process.versions&&process.versions.node&&process.versions.v8);if(g&&!document.getElementById)throw new h("Not supported browser");var c={isBrowserDocument:function(){return g},isBrowser:function(){return!d&&(g||f)},isNodeJS:function(){return!g&&d},isWebWorker:function(){return!g&&
 !d&&f},browserDocumentOrDie:function(){if(!this.isBrowserDocument())throw new h("Trying to load a browser-only module on non-browser environment");}};c.isBrowserDocument=c.isBrowserDocument;c.isBrowser=c.isBrowser;c.isNodeJS=c.isNodeJS;c.isWebWorker=c.isWebWorker;c.browserDocumentOrDie=c.browserDocumentOrDie;return c});
@@ -382,4 +382,4 @@ r.prototype.ph;r.prototype.isSubscribed=r.prototype.rh;r.prototype.setItems=r.pr
 r.prototype.yk;r.prototype.getSelector=r.prototype.px;r.prototype.setRequestedMaxFrequency=r.prototype.Qh;r.prototype.getRequestedMaxFrequency=r.prototype.mx;r.prototype.setRequestedBufferSize=r.prototype.xk;r.prototype.getRequestedBufferSize=r.prototype.lx;r.prototype.setRequestedSnapshot=r.prototype.lo;r.prototype.getRequestedSnapshot=r.prototype.nx;r.prototype.setCommandSecondLevelFields=r.prototype.TA;r.prototype.getCommandSecondLevelFields=r.prototype.zw;r.prototype.setCommandSecondLevelFieldSchema=
 r.prototype.SA;r.prototype.getCommandSecondLevelFieldSchema=r.prototype.yw;r.prototype.setCommandSecondLevelDataAdapter=r.prototype.RA;r.prototype.getCommandSecondLevelDataAdapter=r.prototype.xw;r.prototype.getValue=r.prototype.getValue;r.prototype.getCommandValue=r.prototype.Aw;r.prototype.getKeyPosition=r.prototype.fr;r.prototype.getCommandPosition=r.prototype.Vq;r.prototype.addListener=r.prototype.addListener;r.prototype.removeListener=r.prototype.removeListener;r.prototype.getListeners=r.prototype.getListeners;
 c(r,n,!1,!0);c(r,b,!0,!0);return r});
-}());
+})(define);
