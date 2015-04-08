@@ -16,15 +16,8 @@ Template.home.events({
   }
 });
 
-Meteor.call('pushSession', function(err, data) {
-  if (err) {
-    console.log(err);
-  }
-  Session.set('q', data);
-});
-
 Template.lightstreamer.helpers({
-  pushstart: function () {
-    return Session.get('q');
-  }
+    isslocations: function() {
+      return ISSLocation.find({}, { sort: {time:-1}});
+    }
 });
