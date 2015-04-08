@@ -1,3 +1,7 @@
+Meteor.publish('isslocation', function () {
+  return isslocation.find();
+});
+
 /** Methods to interact with nasa push lightstream server **/
 Meteor.methods({
   /* Open a session stream with nasa's server */
@@ -9,7 +13,7 @@ Meteor.methods({
     var stationTelemetryy = new lightstreamer.Subscription("MERGE",["USLAB000033"], ["Value"]);
     var stationTelemetryz = new lightstreamer.Subscription("MERGE",["USLAB000034"], ["Value"]);
     lsClient.addListener({
-      onStatusChange: function(newStatus) {         
+      onStatusChange: function(newStatus) {
         console.log(newStatus);
       }
     });
@@ -23,12 +27,12 @@ Meteor.methods({
       onUnsubscription: function() {
         console.log("UNSUBSCRIBED");
       },
-		  onItemUpdate: function(update) {
+		  onItemUpdate: Meteor.bindEnvironment(function(update) {
         var value = update.getValue("Value");
         console.log(value)
-        ISSLocation.insert({X: value, time: Date.now()});
+        isslocation.insert({positionx: value, time: Date.now()});
 		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
-		  }
+		  })
     });
     stationTelemetryy.addListener({
       onSubscription: function() {
@@ -37,11 +41,11 @@ Meteor.methods({
       onUnsubscription: function() {
         console.log("UNSUBSCRIBED");
       },
-		  onItemUpdate: function(update) {
+		  onItemUpdate: Meteor.bindEnvironment(function(update) {
         var value = update.getValue("Value");
-        //ISSLocation.insert({Y: value, time: Date.now()});
+        isslocation.insert({positiony: value, time: Date.now()});
 		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
-		  }
+		  })
     });
     stationTelemetryz.addListener({
       onSubscription: function() {
@@ -50,11 +54,12 @@ Meteor.methods({
       onUnsubscription: function() {
         console.log("UNSUBSCRIBED");
       },
-		  onItemUpdate: function(update) {
+		  onItemUpdate: Meteor.bindEnvironment(function(update) {
         var value = update.getValue("Value");
-       // ISSLocation.insert({Z: value, time: Date.now()});
+        isslocation.insert({positionz: value, time: Date.now()});
 		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
-		  }
+		  })
     });
-  }
+  },
+  
 });

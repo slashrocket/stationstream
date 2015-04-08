@@ -1,4 +1,1 @@
-/**
-* Models
-*/
-ISSLocation = new Meteor.Collection('isslocation');
+isslocation = new Mongo.Collection('isslocation');

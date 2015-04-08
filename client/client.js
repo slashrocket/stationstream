@@ -18,6 +18,6 @@ Template.home.events({
 
 Template.lightstreamer.helpers({
     isslocations: function() {
-      return ISSLocation.find({}, { sort: {time:-1}});
+      return isslocation.find();
     }
 });
