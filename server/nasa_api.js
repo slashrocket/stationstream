@@ -8,7 +8,6 @@ Meteor.methods({
     var testSubscription = new lightstreamer.Subscription("MERGE",["USLAB000025"],["USLAB000025"]);
     testSubscription.setDataAdapter("PROXYTELEMETRY");
     testSubscription.setRequestedSnapshot("yes");
-    lsClient.subscribe(testSubscription);
     lsClient.addListener({
       onStatusChange: function(newStatus) {         
         console.log(newStatus);
@@ -25,5 +24,6 @@ Meteor.methods({
         console.log(obj.getValue("USLAB000025") + ": " + obj.getValue("USLAB000025"));
       }
     });
+    lsClient.subscribe(testSubscription);
   }
 });
