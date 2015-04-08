@@ -13,6 +13,26 @@ Meteor.methods({
   lightstreamerConnect: function() {
     var lightstreamer = Meteor.npmRequire('lightstreamer-client');
     var lsClient = new lightstreamer.LightstreamerClient("http://push.lightstreamer.com","ISSLIVE");  
-      lsClient.connect();
+    lsClient.connect();
+    var testSubscription = new lightstreamer.Subscription("MERGE",["utc"],["utc"]);
+    testSubscription.setDataAdapter("PROXYTELEMETRY");
+    testSubscription.setRequestedSnapshot("yes");
+    lsClient.subscribe(testSubscription);
+    lsClient.addListener({
+      onStatusChange: function(newStatus) {         
+        console.log(newStatus);
+      }
+    });
+    testSubscription.addListener({
+      onSubscription: function() {
+        console.log("SUBSCRIBED");
+      },
+      onUnsubscription: function() {
+        console.log("UNSUBSCRIBED");
+      },
+      onItemUpdate: function(obj) {
+        console.log(obj.getValue("utc") + ": " + obj.getValue("utc"));
+      }
+    });
   }
 });
