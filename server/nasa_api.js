@@ -5,25 +5,24 @@ Meteor.methods({
     var lightstreamer = Meteor.npmRequire('lightstreamer-client');
     var lsClient = new lightstreamer.LightstreamerClient("http://push.lightstreamer.com","ISSLIVE");  
     lsClient.connect();
-    var testSubscription = new lightstreamer.Subscription("MERGE",["USLAB000025"],["USLAB000025"]);
-    testSubscription.setDataAdapter("PROXYTELEMETRY");
-    testSubscription.setRequestedSnapshot("yes");
+    var stationTelemetry = new lightstreamer.Subscription("MERGE",["USLAB000032","USLAB000035","USLAB000033","USLAB000036","USLAB000034","USLAB000037"],["Value"]);
     lsClient.addListener({
       onStatusChange: function(newStatus) {         
         console.log(newStatus);
       }
     });
-    testSubscription.addListener({
+    lsClient.subscribe(stationTelemetry);
+    stationTelemetry.addListener({
       onSubscription: function() {
         console.log("SUBSCRIBED");
       },
       onUnsubscription: function() {
         console.log("UNSUBSCRIBED");
       },
-      onItemUpdate: function(obj) {
-        console.log(obj.getValue("USLAB000025") + ": " + obj.getValue("USLAB000025"));
-      }
+		  onItemUpdate: function(update) {
+		    console.log(update.getValue("Value"));
+		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
+		  }
     });
-    lsClient.subscribe(testSubscription);
   }
 });

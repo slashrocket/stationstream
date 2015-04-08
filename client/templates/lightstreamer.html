@@ -22,23 +22,4 @@
 		<td id="USLAB000037"></td>
 	</tr>
 </table>
-
-
-
-<script>
-require(["LightstreamerClient","Subscription"],function(LightstreamerClient,Subscription) {
-	var client = new LightstreamerClient("http://push.lightstreamer.com","ISSLIVE");
-	client.connect();
-	
-	var sub = new Subscription("MERGE",["USLAB000032","USLAB000035","USLAB000033","USLAB000036","USLAB000034","USLAB000037"],["Value"]);
-	client.subscribe(sub);
-	
-	sub.addListener({
-		onItemUpdate: function(update) {
-			$("#"+update.getItemName()).text(update.getValue("Value"));
-		}
-	});
-	
-});
-</script>
 </template>
