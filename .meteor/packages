@@ -9,3 +9,7 @@ less
 twbs:bootstrap
 http
 iron:router
+meteorhacks:npm
+
+
+npm-container

@@ -17,11 +17,14 @@ Template.home.events({
 });
 
 Meteor.call('pushSession', function(err, data) {
-  if (err)
+  if (err) {
     console.log(err);
+  }
   Session.set('q', data);
 });
 
-Template.home.greeting = function() {
-  return Session.get('q').foo;
-};
+Template.lightstreamer.helpers({
+  pushstart: function () {
+    return Session.get('q');
+  }
+});
