@@ -2,6 +2,12 @@
 <div id="cesiumContainer"></div>
   <script>
     var viewer = new Cesium.Viewer('cesiumContainer');
+    //Create a DynamicObjectCollection to contain the objects from CZML
+    //var dynamicObjectCollection = new DynamicObjectCollection();
+    //Create the standard CZML visualizer collection
+    //var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
+    //Create a Clock object to drive time.
+    //var clock = new Clock();
     viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
   </script>
 </template>

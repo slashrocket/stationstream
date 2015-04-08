@@ -8,3 +8,4 @@ meteor-platform
 less
 twbs:bootstrap
 http
+iron:router
