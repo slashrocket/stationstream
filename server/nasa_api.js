@@ -2,7 +2,7 @@ Meteor.publish('isslocation', function () {
   return isslocation.find();
 });
 
-/** Methods to interact with nasa push lightstream server **/
+/** Methods to interact with NASA push Lightstream server **/
 Meteor.methods({
   /* Open a session stream with nasa's server */
   lightstreamerConnect: function() {
