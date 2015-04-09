@@ -1,9 +1,10 @@
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    Meteor.call("lightstreamerConnect")
+Meteor.startup(function () {
+  Meteor.call("lightstreamerConnect")
+  Restivus.configure({
+    useAuth: true,
+    prettyJson: true
   });
-}
-
-if (Meteor.isClient) {
-  Meteor.subscribe("isslocation");
-}
+  Restivus.addCollection(isslocation, {
+    excludedEndpoints: ['put', 'post', 'delete', 'deleteAll']
+  });
+});

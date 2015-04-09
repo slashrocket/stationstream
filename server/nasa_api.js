@@ -30,7 +30,7 @@ Meteor.methods({
 		  onItemUpdate: Meteor.bindEnvironment(function(update) {
         var value = update.getValue("Value");
         console.log(value)
-        isslocation.insert({positionx: value, time: Date.now()});
+        isslocation.insert({type: 'positionx', position: value, time: Date.now()});
 		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
 		  })
     });
@@ -43,7 +43,7 @@ Meteor.methods({
       },
 		  onItemUpdate: Meteor.bindEnvironment(function(update) {
         var value = update.getValue("Value");
-        isslocation.insert({positiony: value, time: Date.now()});
+        isslocation.insert({type: 'positiony', position: value, time: Date.now()});
 		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
 		  })
     });
@@ -56,7 +56,7 @@ Meteor.methods({
       },
 		  onItemUpdate: Meteor.bindEnvironment(function(update) {
         var value = update.getValue("Value");
-        isslocation.insert({positionz: value, time: Date.now()});
+        isslocation.insert({type: 'positionz', position: value, time: Date.now()});
 		  	//$("#"+update.getItemName()).text(update.getValue("Value")); <-- was used to inject results into divs
 		  })
     });

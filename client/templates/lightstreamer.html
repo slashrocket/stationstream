@@ -1,7 +1,8 @@
 <template name="lightstreamer">
-  {{#each isslocations}}
-  <h5>{{text}}</h5>
-  {{/each}}
+<!--   {{#each IssXpossition}}
+  <h5>{{position}}</h5>
+  {{/each}} -->
+
 <table>
 	<tr>
 		<th></th>
@@ -10,17 +11,17 @@
 	</tr>
 	<tr>
 		<td>X</td>
-		<td id="USLAB000032"></td>
+		<td id="USLAB000032">{{iss_latest_x_possition.position}}</td>
 		<td id="USLAB000035"></td>
 	</tr>
 	<tr>
 		<td>Y</td>
-		<td id="USLAB000033"></td>
+		<td id="USLAB000033">{{iss_latest_y_possition.position}}</td>
 		<td id="USLAB000036"></td>
 	</tr>
 	<tr>
 		<td>Z</td>
-		<td id="USLAB000034"></td>
+		<td id="USLAB000034">{{iss_latest_z_possition.position}}</td>
 		<td id="USLAB000037"></td>
 	</tr>
 </table>
