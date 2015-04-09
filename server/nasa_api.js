@@ -12,13 +12,18 @@ Meteor.methods({
     var lightstreamer = Meteor.npmRequire('lightstreamer-client');
     var lsClient = new lightstreamer.LightstreamerClient("http://push.lightstreamer.com","ISSLIVE");  
     lsClient.connect();
+    /* USLAB000032 = X axis
+       USLAB000033 = Y axis
+       USLAB000034 = Z axis */
     var stationTelemetry = new lightstreamer.Subscription("MERGE",["USLAB000032","USLAB000033","USLAB000034"], ["Value"]);
     /* NODE3000001 = Oxygen level
        NODE3000002 = Nitrogen level
        NODE3000003 = CO2 level
        NODE3000008 = Waste water amount
-       NODE3000009 = Clean water amount */
-    var stationAirWater = new lightstreamer.Subscription("MERGE",["NODE3000001","NODE3000002","NODE3000003", "NODE3000008", "NODE3000009"], ["Value"]);
+       NODE3000009 = Clean water amount
+       USLAB000058 = Cabin air pressure
+       USLAB000059 = Cabin air temp */
+    var stationAirWater = new lightstreamer.Subscription("MERGE",["NODE3000001","NODE3000002","NODE3000003", "NODE3000008", "NODE3000009", "USLAB000058", "USLAB000059"], ["Value"]);
     lsClient.addListener({
       onStatusChange: function(newStatus) {
         console.log(newStatus);
@@ -81,6 +86,14 @@ Meteor.methods({
           case "NODE3000009":
             var valuee = update.getValue("Value")
             issairwater.insert({type: 'goodh2o', value: valuee, time: Date.now()});
+            break;
+          case "USLAB000058":
+            var valuef = update.getValue("Value")
+            issairwater.insert({type: 'cabinpressure', value: valuef, time: Date.now()});
+            break;
+          case "USLAB000059":
+            var valueg = update.getValue("Value")
+            issairwater.insert({type: 'cabintemp', value: valueg, time: Date.now()});
             break;
         } 
       })
