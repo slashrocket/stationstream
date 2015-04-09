@@ -4,6 +4,9 @@ Meteor.publish('isslocation', function () {
 Meteor.publish('issairwater', function () {
   return issairwater.find();
 });
+Meteor.publish('isscomputer', function () {
+  return isscomputer.find();
+});
 
 /** Methods to interact with NASA push Lightstream server **/
 Meteor.methods({
@@ -24,6 +27,10 @@ Meteor.methods({
        USLAB000058 = Cabin air pressure
        USLAB000059 = Cabin air temp */
     var stationAirWater = new lightstreamer.Subscription("MERGE",["NODE3000001","NODE3000002","NODE3000003", "NODE3000008", "NODE3000009", "USLAB000058", "USLAB000059"], ["Value"]);
+    /* USLAB000082 = Computer command received count
+       USLAB000083 = Data loading command count
+       USLAB000087 = Crew PC connection count */
+    var stationComputer = new lightstreamer.Subscription("MERGE",["USLAB000082","USLAB000083","USLAB000087"], ["Value"]);
     lsClient.addListener({
       onStatusChange: function(newStatus) {
         console.log(newStatus);
@@ -94,6 +101,34 @@ Meteor.methods({
           case "USLAB000059":
             var valueg = update.getValue("Value")
             issairwater.insert({type: 'cabintemp', value: valueg, time: Date.now()});
+            break;
+        } 
+      })
+    });
+    lsClient.subscribe(stationComputer);
+    stationComputer.addListener({
+      onSubscription: function() {
+        console.log("SUBSCRIBED to Computer");
+      },
+      onUnsubscription: function() {
+        console.log("UNSUBSCRIBED from Computer");
+      },
+      onItemUpdate: Meteor.bindEnvironment(function(update) {
+        switch (update.getItemName()){
+          case "USLAB000082":
+            var valuea = update.getValue("Value")
+            //console.log("X: " + value);
+            isscomputer.insert({type: 'commandcount', value: valuea, time: Date.now()});
+            break;
+          case "USLAB000083":
+            var valueb = update.getValue("Value")
+            //console.log("Y: " + value);
+            isscomputer.insert({type: 'datacount', value: valueb, time: Date.now()});
+            break;
+          case "USLAB000087":
+            var valuec = update.getValue("Value")
+            //console.log("Z: " + value);
+            isscomputer.insert({type: 'pccount', value: valuec, time: Date.now()});
             break;
         } 
       })
