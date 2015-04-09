@@ -1,1 +1,0 @@
-isslocation = new Mongo.Collection('isslocation');
