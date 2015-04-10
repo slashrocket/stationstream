@@ -7,6 +7,9 @@ Meteor.publish('issairwater', function () {
 Meteor.publish('isscomputer', function () {
   return isscomputer.find();
 });
+Meteor.publish('isssolar', function () {
+  return isssolar.find();
+});
 
 /** Methods to interact with NASA push Lightstream server **/
 Meteor.methods({
@@ -31,6 +34,25 @@ Meteor.methods({
        USLAB000083 = Data loading command count
        USLAB000087 = Crew PC connection count */
     var stationComputer = new lightstreamer.Subscription("MERGE",["USLAB000082","USLAB000083","USLAB000087"], ["Value"]);
+    /* P4000001 = Solar array 2A voltage
+       P4000004 = Solar array 4A voltage
+       P4000007 = Solar array 2A rotation degrees
+       P4000008 = Solar array 4A rotation degrees
+       P6000001 = Solar array 4B voltage
+       P6000004 = Solar array 2B voltage
+       P6000007 = Solar array 4B rotation degrees
+       P6000008 = Solar array 2B rotation degrees
+       S0000003 = SARJ Starboard joint angle
+       S0000004 = SARJ Port joint angle
+       S4000001 = Solar array 1A voltage
+       S4000004 = Solar array 3A voltage
+       S4000007 = Solar array 1A rotation degrees
+       S4000008 = Solar array 3A rotation degrees
+       S6000001 = Solar array 3B voltage
+       S6000004 = Solar array 1B voltage
+       S6000007 = Solar array 3B rotation degrees
+       S6000008 = Solar array 1B rotation degrees*/
+    var stationSolar = new lightstreamer.Subscription("MERGE",["P4000001","P4000004","P4000007","P4000008","P6000001","P6000004","P6000007","P6000008","S0000003","S0000004","S4000001","S4000004","S4000007","S4000008","S6000001","S6000004","S6000007","S6000008"], ["Value"]);
     lsClient.addListener({
       onStatusChange: function(newStatus) {
         console.log(newStatus);
@@ -129,6 +151,109 @@ Meteor.methods({
             var valuec = update.getValue("Value")
             //console.log("Z: " + value);
             isscomputer.insert({type: 'pccount', value: valuec, time: Date.now()});
+            break;
+        } 
+      })
+    });
+    lsClient.subscribe(stationSolar);
+    stationSolar.addListener({
+      onSubscription: function() {
+        console.log("SUBSCRIBED to Solar");
+      },
+      onUnsubscription: function() {
+        console.log("UNSUBSCRIBED from Solar");
+      },
+      onItemUpdate: Meteor.bindEnvironment(function(update) {
+        switch (update.getItemName()){
+          case "P4000001":
+            var valuea = update.getValue("Value")
+            //console.log("X: " + value);
+            isssolar.insert({type: '2Avoltage', value: valuea, time: Date.now()});
+            break;
+          case "P4000004":
+            var valueb = update.getValue("Value")
+            //console.log("Y: " + value);
+            isssolar.insert({type: '4Avoltage', value: valueb, time: Date.now()});
+            break;
+          case "P4000007":
+            var valuec = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '2Arotate', value: valuec, time: Date.now()});
+            break;
+          case "P4000008":
+            var valued = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '4Arotate', value: valued, time: Date.now()});
+            break;
+          case "P6000001":
+            var valuee = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '4Bvoltage', value: valuee, time: Date.now()});
+            break;
+          case "P6000004":
+            var valuef = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '2Bvoltage', value: valuef, time: Date.now()});
+            break;
+          case "P6000007":
+            var valueg = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '4Brotate', value: valueg, time: Date.now()});
+            break;
+          case "P6000008":
+            var valueh = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '2Brotate', value: valueh, time: Date.now()});
+            break;
+          case "S0000003":
+            var valuei = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: 'SARJStarRotate', value: valuei, time: Date.now()});
+            break;
+          case "S0000004":
+            var valuej = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: 'SARJPortRotate', value: valuej, time: Date.now()});
+            break;
+          case "S4000001":
+            var valuek = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '1Avoltage', value: valuek, time: Date.now()});
+            break;
+          case "S4000004":
+            var valuel = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '3Avoltage', value: valuel, time: Date.now()});
+            break;
+          case "S4000007":
+            var valuem = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '1Arotate', value: valuem, time: Date.now()});
+            break;
+          case "S4000008":
+            var valuen = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '3Arotate', value: valuen, time: Date.now()});
+            break;
+          case "S6000001":
+            var valueo = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '3Bvoltage', value: valueo, time: Date.now()});
+            break;
+          case "S6000004":
+            var valuep = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '1Bvoltage', value: valuep, time: Date.now()});
+            break;
+          case "S6000007":
+            var valueq = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '3Brotate', value: valueq, time: Date.now()});
+            break;
+          case "S6000008":
+            var valuer = update.getValue("Value")
+            //console.log("Z: " + value);
+            isssolar.insert({type: '1Brotate', value: valuer, time: Date.now()});
             break;
         } 
       })
