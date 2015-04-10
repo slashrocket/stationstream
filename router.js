@@ -11,6 +11,10 @@ Router.map( function () {
     path: '/cesium',
     template: 'cesium'
   });
+  this.route('analytics', {
+    path: '/analytics',
+    template: 'analytics'
+  });
   this.route('lightstreamer', {
     path: '/lightstreamer',
     template: 'lightstreamer'
