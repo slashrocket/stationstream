@@ -2,7 +2,13 @@
 Meteor.subscribe('isslocation');
 Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
-Meteor.subscribe('isssolar');
+Meteor.subscribe('isssolar', function() {
+  isssolar.find({}).observe({
+    added: function(id) {
+      Meteor.call("UpdateSolarData");
+    }
+  });
+});
 
 Template.analytics.rendered = function() {
   solarvoltage();
