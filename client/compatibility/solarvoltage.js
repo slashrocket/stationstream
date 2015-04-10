@@ -9,27 +9,7 @@ function solarvoltage() {
             chart: {
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
-                marginRight: 10,
-                events: {
-                    load: function () {
-                        // set up the updating of the chart each second
-                        var series = this.series[0];
-                        var series2 = this.series[1];
-                        var series3 = this.series[2];
-                        var series4 = this.series[3];
-                        setInterval(function () {
-                            var x = (new Date()).getTime(), // current time
-                                y = Math.random();
-                            var z = Math.random();
-                            var yy = Math.random();
-                            var zz = Math.random();
-                            series.addPoint([x, y], true, true);
-                            series2.addPoint([x, z], true, true);
-                            series3.addPoint([x, yy], true, true);
-                            series4.addPoint([x, zz], true, true);
-                        }, 2000);
-                    }
-                }
+                marginRight: 10
             },
             title: {
                 text: 'Live random data'
@@ -62,57 +42,6 @@ function solarvoltage() {
                 enabled: false
             },
             series: [{
-                name: 'Random data',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
-                }())
-            },
-                    {
-                name: 'Random data',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
-                }())
-            },
-                     {
-                name: 'Random data',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
-                }())
-            },
-                     {
                 name: 'Random data',
                 data: (function () {
                     // generate an array of random data
