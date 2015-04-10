@@ -1,9 +1,13 @@
 function solarvoltage() {
-  var seriesData = [];
-  var time = new Date().getTime()
-  var latest = isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}});
-  //seriesData.push(time, Number(latest.value);
-  seriesData.push(time, 0);
+    var seriesData = []
+    var datime = new Date().getTime()
+    seriesData.push([datime + 1, 150])
+    seriesData.push([datime, 150])
+    seriesData.push([datime, 150])
+    seriesData.push([datime, 150])
+    seriesData.push([datime, 150])
+    seriesData.push([datime, 150])
+    seriesData.push([datime, 150])
 
   Highcharts.setOptions({
     global: {
@@ -14,8 +18,6 @@ function solarvoltage() {
   $('#solarvoltagechart').highcharts({
     chart: {
       type: 'spline',
-      animation: Highcharts.svg, // don't animate in old IE
-      marginRight: 10,
       events: {
         load: function () {
           // set up the updating of the chart each second
