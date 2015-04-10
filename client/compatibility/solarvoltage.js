@@ -1,13 +1,16 @@
 function solarvoltage() {
-    var seriesData = []
-    var datime = new Date().getTime()
-    seriesData.push([datime + 1, 150])
-    seriesData.push([datime, 150])
-    seriesData.push([datime, 150])
-    seriesData.push([datime, 150])
-    seriesData.push([datime, 150])
-    seriesData.push([datime, 150])
-    seriesData.push([datime, 150])
+  var seriesData = []
+  var time = new Date().getTime()
+  var latest = isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}});
+  var datime = new Date().getTime()
+  seriesData.push([datime + 1, 150])
+  seriesData.push(time, Number(latest.value));
+  seriesData.push(time, Number(latest.value));
+  seriesData.push(time, Number(latest.value));
+  seriesData.push(time, Number(latest.value));
+  seriesData.push(time, Number(latest.value));
+  seriesData.push(time, Number(latest.value));
+  seriesData.push(time, Number(latest.value));
 
   Highcharts.setOptions({
     global: {
@@ -39,13 +42,13 @@ function solarvoltage() {
     },
     xAxis: {
       type: 'datetime',
-      tickPixelInterval: 15333300
+      tickAmount: 5
     },
     yAxis: {
       title: {
         type: 'logarithmic',
         text: 'Value',
-        tickPixelInterval: 15333300
+        tickAmount: 5
       },
       plotLines: [{
         value: 0,

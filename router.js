@@ -13,7 +13,10 @@ Router.map( function () {
   });
   this.route('analytics', {
     path: '/analytics',
-    template: 'analytics'
+    template: 'analytics',
+    waitOn: function(){
+      return Meteor.subscribe('isssolar');
+    }
   });
   this.route('lightstreamer', {
     path: '/lightstreamer',
