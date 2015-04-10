@@ -4,6 +4,10 @@ Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
 Meteor.subscribe('isssolar');
 
+Template.analytics.rendered = function() {
+  solarvoltage();
+}
+
 Template.lightstreamer.helpers({
     isslocations: function() {
       return isslocation.find();
