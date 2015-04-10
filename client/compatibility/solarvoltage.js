@@ -1,9 +1,11 @@
 function solarvoltage() {
-  Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
+  var seriesData = [];
+  var voltage = isssolar.find({type: '2Avoltage'},{sort: {time : -1}, limit: 10});
+
+  voltage.forEach(function(option) {
+    var dataPoint = [option.time, option.value];
+    seriesData.push(dataPoint);
+  });
 
         $('#solarvoltagechart').highcharts({
             chart: {
@@ -12,11 +14,10 @@ function solarvoltage() {
                 marginRight: 10
             },
             title: {
-                text: 'Live random data'
+                text: 'Voltage of Solar panel 2A - Live data'
             },
             xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
+                type: 'datetime'
             },
             yAxis: {
                 title: {
@@ -28,35 +29,9 @@ function solarvoltage() {
                     color: '#808080'
                 }]
             },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
             series: [{
-                name: 'Random data',
-                data: (function () {
-                    // generate an array of random data
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i += 1) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: Math.random()
-                        });
-                    }
-                    return data;
-                }())
+                name: '2A Voltage',
+                data: seriesData
             }]
   });
 }
