@@ -10,7 +10,7 @@ Meteor.startup(function () {
       var positiony = isslocation.findOne({type: 'positiony'},{sort: {time : -1}});
       var positionz = isslocation.findOne({type: 'positionz'},{sort: {time : -1}});
       var telemetry = {
-        telemetry: positionx.position,
+        positionx: positionx.position,
         positiony: positiony.position,
         positionz: positionz.position
       };
