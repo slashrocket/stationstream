@@ -4,7 +4,6 @@ Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
 Meteor.subscribe('isssolar');
 
-
 Template.analytics.rendered = function() {
   solarvoltage();
 }

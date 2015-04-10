@@ -1,6 +1,12 @@
 function solarvoltage() {
   var seriesData = [];
   var time = new Date().getTime()
+  //var latest = isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}});
+  //seriesData.push(time, Math.floor(latest.value));
+  seriesData.push(time, 0);
+  seriesData.push(time, 0);
+  seriesData.push(time, 0);
+  seriesData.push(time, 0);
   seriesData.push(time, 0);
 
           Highcharts.setOptions({
