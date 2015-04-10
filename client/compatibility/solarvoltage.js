@@ -1,16 +1,9 @@
 function solarvoltage() {
   var seriesData = []
-  var time = new Date().getTime()
-  var latest = isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}});
-  var datime = new Date().getTime()
-  seriesData.push([datime + 1, 150])
-  seriesData.push(time, Number(latest.value));
-  seriesData.push(time, Number(latest.value));
-  seriesData.push(time, Number(latest.value));
-  seriesData.push(time, Number(latest.value));
-  seriesData.push(time, Number(latest.value));
-  seriesData.push(time, Number(latest.value));
-  seriesData.push(time, Number(latest.value));
+  var latest8 = isssolar.find({type: '2Avoltage'},{sort: {time : -1}, limit: 8}).fetch();
+  latest8.forEach(function (item) {
+    seriesData.push(item.time, Number(item.value));
+  });
 
   Highcharts.setOptions({
     global: {
