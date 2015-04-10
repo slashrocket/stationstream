@@ -19,4 +19,8 @@ Router.map( function () {
     path: '/lightstreamer',
     template: 'lightstreamer'
   });
+  this.route('api', {
+    path: '/api',
+    template: 'api'
+  });
 });
