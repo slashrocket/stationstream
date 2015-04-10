@@ -5,7 +5,6 @@
 
 <table>
 	<tr>
-		<th></th>
 		<th>Position(km)</th>
 		<th>Velocity(m/s)</th>
 	</tr>
@@ -21,5 +20,49 @@
 		<td>Z</td>
 		<td>{{iss_latest_z_position.position}}</td>
 	</tr>
+</table>
+<table>
+  <tr>
+    <td>o2 reading</td>
+    <td>{{iss_o2.value}}</td>
+  </tr>
+  <tr>
+    <td>n2 reading</td>
+    <td>{{iss_n2.value}}</td>
+  </tr>
+  <tr>
+    <td>co2 reading</td>
+    <td>{{iss_co2.value}}</td>
+  </tr>
+  <tr>
+    <td>waste h2o reading</td>
+    <td>{{iss_badh2o.value}}</td>
+  </tr>
+  <tr>
+    <td>Clean h2o reading</td>
+    <td>{{iss_goodh2o.value}}</td>
+  </tr>
+  <tr>
+    <td>Cabin pressure reading</td>
+    <td>{{iss_cabin_pressure.value}}</td>
+  </tr>
+  <tr>
+    <td>Cabin temperature reading</td>
+    <td>{{iss_cabin_temp.value}}</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>Computer instruction count</td>
+    <td>{{iss_command_count.value}}</td>
+  </tr>
+  <tr>
+    <td>Computer data instruction count</td>
+    <td>{{iss_data_count.value}}</td>
+  </tr>
+  <tr>
+    <td>Astronaut Connected PC count</td>
+    <td>{{iss_pc_count.value}}</td>
+  </tr>
 </table>
 </template>
