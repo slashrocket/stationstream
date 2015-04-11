@@ -54,7 +54,25 @@ Meteor.startup(function () {
         return {statusCode: 404, body: {status: 'fail', message: 'Record not found'}}
       };
     }
-  })
+  });
+  Restivus.addRoute('isscomputer/latest', {authRequired: false}, {
+    get: function(){
+      var commandcount = isscomputer.findOne({type: 'commandcount'},{sort: {time : -1}});
+      var datacount = isscomputer.findOne({type: 'datacount'},{sort: {time : -1}});
+      var pccount = isscomputer.findOne({type: 'pccount'},{sort: {time : -1}});
+      
+      var computerdata = {
+        commandcount: commandcount.value,
+        datacount: datacount.value,
+        pccount: pccount.value
+      }
+      if (commandcount && datacount && pccount){
+        return {status: 'success', data: computerdata};
+      }else{
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found'}};
+      };
+    }
+  });
   Restivus.addRoute('isssolar/latest', {authRequired: false}, {
     get: function(){
       // SAR Data
