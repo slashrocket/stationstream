@@ -1,8 +1,8 @@
 function solarvoltage() {
   var seriesData = []
-  var latest8 = isssolar.find({type: '2Avoltage'},{sort: {time : -1}, limit: 8}).fetch();
+  var latest8 = isssolar.find({type: '2Avoltage'},{sort: {time : -1}, limit: 8});
   latest8.forEach(function (item) {
-    seriesData.push(item.time, Number(item.value));
+    seriesData.push([item.time, Number(item.value)]);
   });
 
   Highcharts.setOptions({
@@ -22,7 +22,7 @@ function solarvoltage() {
             var last_solar = series.data[series.data.length - 1];
             var solar = isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}});
             if ( Number(last_solar.y) != Number(solar.value) ) {
-              var x = (new Date()).getTime(); // current time
+              var x = solar.time; // current time
               var y = Number(solar.value);
               series.addPoint([x, y], true, true);
             }

@@ -6,9 +6,9 @@ Meteor.subscribe('isssolar');
 
 Template.analytics.rendered = function() {
   var chart = solarvoltage();
-  // this.autorun(function(){
-  //   chart.series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
-  // });
+   //this.autorun(function(){
+    // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
+   //});
 }
 
 Template.lightstreamer.helpers({
