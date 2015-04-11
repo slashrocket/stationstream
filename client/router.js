@@ -13,7 +13,13 @@ Router.map( function () {
   });
   this.route('cesium', {
     path: '/cesium',
-    template: 'cesium'
+    template: 'cesium',
+    waitOn: function(){
+      return [
+        //Subscribe to Solar Data
+        Meteor.subscribe('isslocation'),
+      ];
+    }
   });
   this.route('analytics', {
     path: '/analytics',

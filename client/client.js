@@ -3,6 +3,12 @@ Meteor.subscribe('isslocation');
 Meteor.subscribe('isscomputer');
 //Meteor.subscribe('isssolar');
 
+Template.cesium.rendered = function() {
+ var czml = czmlpacket();
+    
+  viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
+}
+
 Template.analytics.rendered = function() {
   var chart1A = solarvoltage("1A", "#solarvoltagechart1A", "1Avoltage");
   var chart1B = solarvoltage("1B", "#solarvoltagechart1B", "1Bvoltage");

@@ -2,23 +2,16 @@
 <div class="well">
 <div id="cesiumContainer"></div>
   <script>
-    var viewer = new Cesium.Viewer('cesiumContainer');
+     var viewer = new Cesium.Viewer('cesiumContainer');
     //Create new CZML datasource
-    var czmlStream = new Cesium.CzmlDataSource();
-    var czmlStreamUrl = 'https://stationstream.space/api/cesium/latest';
-
-    //set up EventSource
-    var czmlEventSource = new EventSource(czmlStreamUrl);
-    var test = JSON.parse(Assets.getText('api/cesium/latest'));
-    //Listen for EventSource data coming across as event: czml
-    czmlEventSource.addEventListener('czml', function(czmlUpdate) {
-      //process the 'data:' coming across as JSON into the datasource
-      czmlStreamUrl.process(JSON.parse(czmlUpdate.data));
-    }, false);
+    //var czmlStream = new Cesium.CzmlDataSource();
+    //var czmlStreamUrl = 'https://stationstream.space/api/cesium/latest';
+    var czml = czmlpacket();
+    viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
 
     //put the datasource into Cesium
-    viewer.dataSources.add(test); 
-    viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
+   // viewer.dataSources.add(czmlStreamUrl.process(JSON.parse(czmlUpdate.data))); 
+    //viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
   </script>
 </div>
 </template>
