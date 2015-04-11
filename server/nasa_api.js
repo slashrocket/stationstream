@@ -1,16 +1,14 @@
 Meteor.publish('isslocation', function () {
-  return isslocation.find();
+  return isslocation.find({}, {sort: {time: -1}, limit: 60 });
 });
 Meteor.publish('issairwater', function () {
-  return issairwater.find();
+  return issairwater.find({}, {sort: {time: -1}, limit: 60});
 });
 Meteor.publish('isscomputer', function () {
-  return isscomputer.find();
+  return isscomputer.find({}, {sort: {time: -1}, limit: 60});
 });
 Meteor.publish('isssolar', function () {
-  //limited it to 10
-  //the graph and API are the only using this data, the graph takes only 5, the API just 1
-  return isssolar.find({}, {sort: {count: -1}, limit: 10}); 
+  return isssolar.find({}, {sort: {time: -1}, limit: 60}); 
 });
 
 /** Methods to interact with NASA push Lightstream server **/
