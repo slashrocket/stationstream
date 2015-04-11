@@ -1,5 +1,5 @@
 Meteor.subscribe('isslocation');
-Meteor.subscribe('issairwater');
+// Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
 //Meteor.subscribe('isssolar');
 
