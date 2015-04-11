@@ -1,6 +1,6 @@
 function solarvoltage(name, id, panel) {
   var seriesData = []
-  var latest8 = isssolar.find({type: panel},{sort: {time : -1}, limit: 8});
+  var latest8 = isssolar.find({type: panel},{sort: {time : -1}, limit: 5});
   latest8.forEach(function (item) {
     seriesData.push([item.time, Number(item.value)]);
   });
@@ -26,7 +26,7 @@ function solarvoltage(name, id, panel) {
               var y = Number(solar.value);
               series.addPoint([x, y], true, true);
             }
-          }, 3000);
+          }, 5000);
         }
       }
     },
@@ -35,13 +35,13 @@ function solarvoltage(name, id, panel) {
     },
     xAxis: {
       type: 'datetime',
-      tickAmount: 5
+      tickAmount: 15
     },
     yAxis: {
       title: {
         type: 'logarithmic',
         text: 'Value',
-        tickAmount: 5
+        tickAmount: 15
       },
       plotLines: [{
         value: 0,

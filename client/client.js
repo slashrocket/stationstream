@@ -1,11 +1,17 @@
 Meteor.subscribe('isslocation');
 Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
-Meteor.subscribe('isssolar');
+//Meteor.subscribe('isssolar');
 
 Template.analytics.rendered = function() {
+  var chart1A = solarvoltage("1A", "#solarvoltagechart1A", "1Avoltage");
+  var chart1B = solarvoltage("1B", "#solarvoltagechart1B", "1Bvoltage");
   var chart2A = solarvoltage("2A", "#solarvoltagechart2A", "2Avoltage");
+  var chart2B = solarvoltage("2B", "#solarvoltagechart2B", "2Bvoltage");
+  var chart3A = solarvoltage("3A", "#solarvoltagechart3A", "3Avoltage");
+  var chart3B = solarvoltage("3B", "#solarvoltagechart3B", "3Bvoltage");
   var chart4A = solarvoltage("4A", "#solarvoltagechart4A", "4Avoltage");
+  var chart4B = solarvoltage("4B", "#solarvoltagechart4B", "4Bvoltage");
    //this.autorun(function(){
     // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
    //});
