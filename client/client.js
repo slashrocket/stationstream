@@ -28,6 +28,10 @@ Template.analytics.rendered = function() {
    //});
 }
 
+Template.sidebar.rendered = function() {
+  var bartest = bargauge("testing", "#bartest", "test")
+}
+
 Template.lightstreamer.helpers({
     isslocations: function() {
         return isslocation.find();
