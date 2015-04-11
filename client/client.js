@@ -3,6 +3,13 @@ Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
 Meteor.subscribe('isssolar');
 
+Template.analytics.rendered = function() {
+  var chart = solarvoltage();
+   //this.autorun(function(){
+    // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
+   //});
+}
+
 Template.lightstreamer.helpers({
     isslocations: function() {
         return isslocation.find();

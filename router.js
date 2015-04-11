@@ -15,6 +15,13 @@ Router.map( function () {
     path: '/cesium',
     template: 'cesium'
   });
+  this.route('analytics', {
+    path: '/analytics',
+    template: 'analytics',
+    waitOn: function(){
+      return Meteor.subscribe('isssolar');
+    }
+  });
   this.route('lightstreamer', {
     path: '/lightstreamer',
     template: 'lightstreamer'

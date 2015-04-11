@@ -167,7 +167,7 @@ Meteor.methods({
         switch (update.getItemName()){
           case "P4000001":
             var valuea = update.getValue("Value")
-            //console.log("X: " + value);
+            console.log("2Avoltage: " + valuea);
             isssolar.insert({type: '2Avoltage', value: valuea, time: Date.now()});
             break;
           case "P4000004":
