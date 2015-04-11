@@ -8,7 +8,7 @@ Meteor.publish('isscomputer', function () {
   return isscomputer.find();
 });
 Meteor.publish('isssolar', function () {
-  return isssolar.find();
+  return isssolar.find({}, {sort: {count: -1}, limit: 50});
 });
 
 /** Methods to interact with NASA push Lightstream server **/
