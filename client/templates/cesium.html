@@ -3,12 +3,21 @@
 <div id="cesiumContainer"></div>
   <script>
     var viewer = new Cesium.Viewer('cesiumContainer');
-    //Create a DynamicObjectCollection to contain the objects from CZML
-    //var dynamicObjectCollection = new DynamicObjectCollection();
-    //Create the standard CZML visualizer collection
-    //var visualizers = VisualizerCollection.createCzmlStandardCollection(scene, dynamicObjectCollection);
-    //Create a Clock object to drive time.
-    //var clock = new Clock();
+    //Create new CZML datasource
+    var czmlStream = new Cesium.CzmlDataSource();
+    var czmlStreamUrl = 'http://stationstream.space/api/cesium/latest';
+
+    //set up EventSource
+    var czmlEventSource = new EventSource(czmlStreamUrl);
+
+    //Listen for EventSource data coming across as event: czml
+    czmlEventSource.addEventListener('czml', function(czmlUpdate) {
+      //process the 'data:' coming across as JSON into the datasource
+      czmlStream.process(JSON.parse(czmlUpdate.data));
+    }, false);
+
+    //put the datasource into Cesium
+    viewer.dataSources.add(czmlStream); 
     viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
   </script>
 </div>

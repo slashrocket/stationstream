@@ -21,6 +21,31 @@ Meteor.startup(function () {
       };
     }
   });
+  Restivus.addRoute('cesium/latest', {authRequired: false}, {
+    get: function(){
+      var positionx = isslocation.findOne({type: 'positionx'},{sort: {time : -1}});
+      var positiony = isslocation.findOne({type: 'positiony'},{sort: {time : -1}});
+      var positionz = isslocation.findOne({type: 'positionz'},{sort: {time : -1}});
+      var totalpos = positionx.position + ',' + positiony.position + ',' + positionz.position
+      var czml = {
+        id: "ISS",
+        name: "ISS",
+        billboard: {
+          scale: 1.5,
+          show: true,
+          verticalOrigin: "CENTER"
+        },
+        position: {
+          cartesian: totalpos
+        }
+      };
+      if (positionx && positiony && positionz){
+        return czml;
+      }else{
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}}
+      };
+    }
+  });
   Restivus.addRoute('issairwater/latest', {authRequired: false}, {
     get: function(){
       var o2 = issairwater.findOne({type: 'o2'}, {sort: {time: -1}});
