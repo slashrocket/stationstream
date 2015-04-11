@@ -1,25 +1,25 @@
 <template name="lightstreamer">
+<div class="well">
 <!--   {{#each IssXpossition}}
   <h5>{{position}}</h5>
   {{/each}} -->
-
 <table>
-	<tr>
-		<th>Position(km)</th>
-		<th>Velocity(m/s)</th>
-	</tr>
-	<tr>
-		<td>X</td>
-		<td>{{iss_latest_x_position.position}}</td>
-	</tr>
-	<tr>
-		<td>Y</td>
-		<td>{{iss_latest_y_position.position}}</td>
-	</tr>
-	<tr>
-		<td>Z</td>
-		<td>{{iss_latest_z_position.position}}</td>
-	</tr>
+  <tr>
+    <th>Position(km)</th>
+    <th>Velocity(m/s)</th>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>{{iss_latest_x_position.position}}</td>
+  </tr>
+  <tr>
+    <td>Y</td>
+    <td>{{iss_latest_y_position.position}}</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>{{iss_latest_z_position.position}}</td>
+  </tr>
 </table>
 <table>
   <tr>
@@ -65,4 +65,5 @@
     <td>{{iss_pc_count.value}}</td>
   </tr>
 </table>
+</div>
 </template>

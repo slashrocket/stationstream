@@ -1,4 +1,5 @@
 <template name="cesium">
+<div class="well">
 <div id="cesiumContainer"></div>
   <script>
     var viewer = new Cesium.Viewer('cesiumContainer');
@@ -10,4 +11,5 @@
     //var clock = new Clock();
     viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
   </script>
+</div>
 </template>
