@@ -4,7 +4,8 @@ Meteor.subscribe('isscomputer');
 Meteor.subscribe('isssolar');
 
 Template.analytics.rendered = function() {
-  var chart = solarvoltage();
+  var chart2A = solarvoltage("2A", "#solarvoltagechart2A", "2Avoltage");
+  var chart4A = solarvoltage("4A", "#solarvoltagechart4A", "4Avoltage");
    //this.autorun(function(){
     // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
    //});

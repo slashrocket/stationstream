@@ -1,6 +1,6 @@
-function solarvoltage() {
+function solarvoltage(name, id, panel) {
   var seriesData = []
-  var latest8 = isssolar.find({type: '2Avoltage'},{sort: {time : -1}, limit: 8});
+  var latest8 = isssolar.find({type: panel},{sort: {time : -1}, limit: 8});
   latest8.forEach(function (item) {
     seriesData.push([item.time, Number(item.value)]);
   });
@@ -11,7 +11,7 @@ function solarvoltage() {
     }
   });
 
-  $('#solarvoltagechart').highcharts({
+  $(id).highcharts({
     chart: {
       type: 'spline',
       events: {
@@ -20,7 +20,7 @@ function solarvoltage() {
           var series = this.series[0];
           setInterval(function () {
             var last_solar = series.data[series.data.length - 1];
-            var solar = isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}});
+            var solar = isssolar.findOne({type: panel},{sort: {time : -1}});
             if ( Number(last_solar.y) != Number(solar.value) ) {
               var x = solar.time; // current time
               var y = Number(solar.value);
@@ -31,7 +31,7 @@ function solarvoltage() {
       }
     },
     title: {
-      text: 'Voltage of Solar panel 2A - Live data'
+      text: 'Voltage of Solar panel ' + name + ' - Live data'
     },
     xAxis: {
       type: 'datetime',
@@ -50,7 +50,7 @@ function solarvoltage() {
       }]
     },
     series: [{
-      name: '2A Voltage',
+      name: panel,
       data: seriesData
     }]
   });
