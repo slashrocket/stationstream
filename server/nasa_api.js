@@ -8,7 +8,9 @@ Meteor.publish('isscomputer', function () {
   return isscomputer.find();
 });
 Meteor.publish('isssolar', function () {
-  return isssolar.find({}, {sort: {count: -1}, limit: 50});
+  //limited it to 10
+  //the graph and API are the only using this data, the graph takes only 5, the API just 1
+  return isssolar.find({}, {sort: {count: -1}, limit: 10}); 
 });
 
 /** Methods to interact with NASA push Lightstream server **/

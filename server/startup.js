@@ -21,6 +21,40 @@ Meteor.startup(function () {
       };
     }
   });
+  Restivus.addRoute('issairwater/latest', {authRequired: false}, {
+    get: function(){
+      var o2 = issairwater.findOne({type: 'o2'}, {sort: {time: -1}});
+      var n2 = issairwater.findOne({type: 'n2'}, {sort: {time: -1}});
+      var co2 = issairwater.findOne({type: 'co2'}, {sort: {time: -1}});
+      var badh2o = issairwater.findOne({type: 'badh2o'}, {sort: {time: -1}});
+      var goodh2o = issairwater.findOne({type: 'goodh2o'}, {sort: {time: -1}});
+      var cabinpressure = issairwater.findOne({type: 'cabinpressure'}, {sort: {time: -1}});
+      var cabintemp = issairwater.findOne({type: 'cabintemp'}, {sort: {time: -1}});
+      var air = {
+        o2: o2.value,
+        n2: n2.value,
+        co2: co2.value
+      }
+      var h2o = {
+        bad: badh2o.value,
+        good: goodh2o.value
+      }
+      var cabin = {
+        pressure: cabinpressure.value,
+        temp: cabintemp.value
+      }
+      var airwater = {
+        air: air,
+        h2o: h2o,
+        cabin: cabin
+      }
+      if (o2 && n2 && co2 && badh2o && goodh2o && cabinpressure && cabintemp){
+        return {status:'success', data: airwater};
+      }else{
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found'}}
+      };
+    }
+  })
   Restivus.addRoute('isssolar/latest', {authRequired: false}, {
     get: function(){
       // SAR Data
