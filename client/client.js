@@ -12,9 +12,24 @@ Template.analytics.rendered = function() {
   var chart3B = solarvoltage("3B", "#solarvoltagechart3B", "3Bvoltage");
   var chart4A = solarvoltage("4A", "#solarvoltagechart4A", "4Avoltage");
   var chart4B = solarvoltage("4B", "#solarvoltagechart4B", "4Bvoltage");
+  var charto2 = airwater("O2", "#o2", "o2")
+  var chartn2 = airwater("N2", "#n2", "n2")
+  var chartco2 = airwater("CO2", "#co2", "co2")
+  var chartbadh2o = airwater("Waste water", "#badh2o", "badh2o")
+  var chartgoodh2o = airwater("Drinkable water", "#goodh2o", "goodh2o")
+  var chartpressure = airwater("ISS Cabin pressure", "#cabinpressure", "cabinpressure")
+  var charttemp = airwater("ISS Cabin temp", "#cabintemp", "cabintemp")
+  var chartcommand = computer("ISS Computer command count", "#commandcount", "commandcount")
+  var chartdata = computer("ISS Computer data input count", "#datacount", "datacount")
+  var chartpc = computer("ISS PC Connection count", "#pccount", "pccount")
+  
    //this.autorun(function(){
     // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
    //});
+}
+
+Template.sidebar.rendered = function() {
+  var bartest = bargauge("testing", "#bartest", "test")
 }
 
 Template.lightstreamer.helpers({
