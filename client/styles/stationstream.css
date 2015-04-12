@@ -86,3 +86,9 @@ body {
 .tech ul {
   list-style: none;
 }
+
+/* Home Page Font-Awesome Large */
+.large-icon:before {
+  font-size: 200px;
+  display: inline-block;
+}
