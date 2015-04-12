@@ -6,6 +6,12 @@ Meteor.subscribe('isscomputer');
 //Meteor.subscribe('issairwater_co2');
 //Meteor.subscribe('issairwater_o2');
 
+Template.cesium.onRendered(function() {
+ var czml = czmlpacket();
+    
+  viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
+});
+
 Template.analytics.onRendered(function () {
   var chart1A = solarvoltage("1A", "#solarvoltagechart1A", "1Avoltage");
   var chart1B = solarvoltage("1B", "#solarvoltagechart1B", "1Bvoltage");
