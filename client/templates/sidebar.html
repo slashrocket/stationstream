@@ -5,9 +5,12 @@
       <iframe width="190" height="172" src="//www.ustream.tv/embed/9408562?v=3&amp;wmode=direct&autoplay=true&volume=0" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
       <br />
       <h3>Live Stats</h3>
-      <i>Live Stats Forthcoming</i>
-      <br />
-      <canvas id="bartest" style="width: 190px; height: 190px; margin: 0 auto"></canvas>
+      {{#if Template.subscriptionsReady}}
+	  {{else}}
+	  	Loading...
+	  {{/if}}
+	  <canvas id="air-chart" width="190" height="190"></canvas>
+	  test
     </div>
 </div>
 </template>

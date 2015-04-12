@@ -1,9 +1,12 @@
 Meteor.subscribe('isslocation');
-// Meteor.subscribe('issairwater');
 Meteor.subscribe('isscomputer');
 //Meteor.subscribe('isssolar');
+//Meteor.subscribe('issairwater');
+//Meteor.subscribe('issairwater_n2');
+//Meteor.subscribe('issairwater_co2');
+//Meteor.subscribe('issairwater_o2');
 
-Template.analytics.rendered = function() {
+Template.analytics.onRendered(function () {
   var chart1A = solarvoltage("1A", "#solarvoltagechart1A", "1Avoltage");
   var chart1B = solarvoltage("1B", "#solarvoltagechart1B", "1Bvoltage");
   var chart2A = solarvoltage("2A", "#solarvoltagechart2A", "2Avoltage");
@@ -26,11 +29,27 @@ Template.analytics.rendered = function() {
    //this.autorun(function(){
     // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
    //});
-}
+});
 
-Template.sidebar.rendered = function() {
-  var bartest = bargauge("testing", "#bartest", "test")
-}
+Template.sidebar.onRendered(function () {
+  // Draw the initial air data chart
+  drawAirChart();
+  // Detect backend data changes and instruct Chart.js to rerender the chart
+  Tracker.autorun(function(){
+  	airChart.update();
+  })
+});
+
+Template.sidebar.onCreated(function () {
+	var self = this;
+
+	self.autorun(function() {
+		self.subscribe('issairwater');
+		self.subscribe('issairwater_o2');
+		self.subscribe('issairwater_co2');
+		self.subscribe('issairwater_n2');
+	});
+});
 
 Template.lightstreamer.helpers({
     isslocations: function() {

@@ -1,11 +1,19 @@
 Router.configure({
-  trackPageView: true
+  trackPageView: true,
+  waitOn: function(){
+    return [
+      Meteor.subscribe('issairwater_o2'),
+      Meteor.subscribe('issairwater_n2'),
+      Meteor.subscribe('issairwater_co2'),
+      Meteor.subscribe('issairwater')
+    ]
+  }
 });
 
 Router.map( function () {
   this.route('home', {
     path: '/',
-    template: 'home'
+    template: 'home',
   });
   this.route('about', {
     path: '/about',
@@ -40,7 +48,7 @@ Router.map( function () {
         // Subscribe to Location Data
         Meteor.subscribe('isslocation_x'),
         Meteor.subscribe('isslocation_y'),
-        Meteor.subscribe('isslocation_z'),
+        Meteor.subscribe('isslocation_z')
       ];
     }
   });
