@@ -1,21 +1,21 @@
-function drawAirChart(){
+function drawAirChart(o2, n2, co2){
     var data = [
         {
-            value: 123,
+            value: o2,
             //value: issairwater.findOne({type: 'o2'},{sort: {time: -1}}),
             color: "#FDB45C",
             highlight: "#FFC870",
             label: "Oxygen"
         },
         {
-            value: 321,
+            value: n2,
             //value: issairwater.findOne({type: 'n2'},{sort: {time: -1}}),
             color: "#46BFBD",
             highlight: "#5AD3D1",
             label: "Nitrogen"
         },
         {
-            value: 50,
+            value: co2,
             //value: issairwater.findOne({type: 'co2'},{sort: {time: -1}}),
             color: "#F7464A",
             highlight: "#FF5A5E",

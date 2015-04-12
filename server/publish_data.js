@@ -2,7 +2,7 @@ Meteor.publish('isslocation', function () {
   return isslocation.find({}, {sort: {time: -1}, limit: 15 });
 });
 Meteor.publish('issairwater', function () {
-  return issairwater.find({}, {sort: {time: -1}, limit: 25});
+  return issairwater.find({}, {sort: {time: -1}, limit: 10});
 });
 Meteor.publish('isscomputer', function () {
   return isscomputer.find({}, {sort: {time: -1}, limit: 20});

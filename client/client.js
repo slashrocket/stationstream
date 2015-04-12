@@ -39,22 +39,33 @@ Template.analytics.onRendered(function () {
 
 Template.sidebar.onRendered(function () {
   // Draw the initial air data chart
-  drawAirChart();
+  //drawAirChart();
   // Detect backend data changes and instruct Chart.js to rerender the chart
-  Tracker.autorun(function(){
-  	airChart.update();
-  })
+  // Tracker.autorun(function(){
+  // 	airChart.update();
+  // })
+  var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}});
+  console.log(Template.instance().subscriptionsReady());
 });
 
 Template.sidebar.onCreated(function () {
-	var self = this;
+  var instance = this;
 
-	self.autorun(function() {
-		self.subscribe('issairwater');
-		self.subscribe('issairwater_o2');
-		self.subscribe('issairwater_co2');
-		self.subscribe('issairwater_n2');
-	});
+  instance.autorun(function() {
+    instance.subscribe('issairwater');
+  });
+});
+
+Template.sidebar.helpers({
+	o2: function() {
+    return issairwater.findOne({type: 'o2'},{sort: {time : -1}});
+  },
+  n2: function() {
+    return issairwater.findOne({type: 'n2'},{sort: {time : -1}});
+  },
+  co2: function() {
+    return issairwater.findOne({type: 'co2'},{sort: {time : -1}});
+  }
 });
 
 Template.lightstreamer.helpers({
