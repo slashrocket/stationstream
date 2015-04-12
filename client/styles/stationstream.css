@@ -53,3 +53,28 @@ body {
     top: 0;
   }
 }
+
+/* About Page Info/Avatar */
+
+.team img {
+  float: left;
+}
+.team ul {
+  list-style: none;
+}
+.team h3 {
+  float: left;
+  padding: 10px;
+}
+.team small {
+  float: left;
+  display: inline-block;
+}
+.team a {
+  color: #A3A3A3;
+  float: left;
+  display: inline-block;
+}
+.team a:hover {
+  color: #6D6D6D !important;
+}
