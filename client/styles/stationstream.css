@@ -5,6 +5,7 @@ body,html,.row-offcanvas {
 
 body {
   padding-top: 50px;
+  overflow-x: hidden;
 }
 
 .navbar-nav {
