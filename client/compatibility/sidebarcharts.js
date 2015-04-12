@@ -2,29 +2,54 @@ function drawAirChart(o2, n2, co2){
     var data = [
         {
             value: o2,
+            //value: 1,
             //value: issairwater.findOne({type: 'o2'},{sort: {time: -1}}),
-            color: "#FDB45C",
-            highlight: "#FFC870",
+            color: "#008AE6",
+            highlight: "#0099FF",
             label: "Oxygen"
         },
         {
             value: n2,
+            //value: 3,
             //value: issairwater.findOne({type: 'n2'},{sort: {time: -1}}),
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
+            color: "#00CCCC",
+            highlight: "#00E6E6",
             label: "Nitrogen"
         },
         {
             value: co2,
+            //value: 5,
             //value: issairwater.findOne({type: 'co2'},{sort: {time: -1}}),
-            color: "#F7464A",
-            highlight: "#FF5A5E",
+            color: "#E6000",
+            highlight: "#FF3333",
             label: "Carbon Dioxide"
         }
     ]
 
     var ctx = $("#air-chart").get(0).getContext("2d");
     var airChart = new Chart(ctx).Doughnut(data);
+}
+
+function drawWaterChart(goodh2o, badh2o){
+    var data = [
+        {
+            value: goodh2o,
+            //value: 1,
+            color: "#2E8AE6",
+            highlight: "#5CADFF",
+            label: "Drinkable Water"
+        },
+        {
+            value: badh2o,
+            //value: 3,
+            color: "#B2B200",
+            highlight: "#E6E600",
+            label: "Waste Water"
+        }
+    ]
+
+    var ctx = $("#water-chart").get(0).getContext("2d");
+    var waterChart = new Chart(ctx).Doughnut(data);
 }
 
 /*

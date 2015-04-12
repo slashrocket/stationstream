@@ -65,6 +65,12 @@ Template.sidebar.helpers({
   },
   co2: function() {
     return issairwater.findOne({type: 'co2'},{sort: {time : -1}});
+  },
+  goodh2o: function() {
+    return issairwater.findOne({type: 'goodh2o'},{sort: {time : -1}});
+  },
+  badh2o: function() {
+    return issairwater.findOne({type: 'badh2o'},{sort: {time : -1}});
   }
 });
 
