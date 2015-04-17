@@ -7,9 +7,9 @@ Meteor.subscribe('isscomputer');
 //Meteor.subscribe('issairwater_o2');
 
 Template.cesium.onRendered(function() {
- var czml = czmlpacket();
+ //var czml = czmlpacket();
     
-  viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
+  //viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
 });
 
 Template.analytics.onRendered(function () {
