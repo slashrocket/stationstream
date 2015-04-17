@@ -1,7 +1,8 @@
 function solarvoltage(name, id, panel) {
   var seriesData = []
   var latest8 = isssolar.find({type: panel},{sort: {time : -1}, limit: 5});
-  latest8.forEach(function (item) {
+  var latest8reverse = latest8.fetch().reverse()
+  latest8reverse.forEach(function (item) {
     seriesData.push([item.time, Number(item.value)]);
   });
 
