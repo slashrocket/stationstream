@@ -1,6 +1,6 @@
 aldeed:template-extension@3.4.3
 autoupdate@1.2.1
-babrahams:editable-json@0.3.13
+babrahams:editable-json@0.4.3
 base64@1.0.3
 binary-heap@1.0.3
 blaze@2.1.2
@@ -39,15 +39,15 @@ meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:async@1.0.0
 meteorhacks:npm@1.3.0
-meteortoys:toykit@0.2.2
+meteortoys:toykit@0.3.4
 minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
 mrt:highcharts@0.1.0
-msavin:mongol@1.0.12
+msavin:mongol@1.0.22
 natestrauser:font-awesome@4.3.0
-nimble:restivus@0.6.3
+nimble:restivus@0.6.4
 npm-container@1.0.0
 observe-sequence@1.0.6
 ordered-dict@1.0.3
@@ -56,7 +56,7 @@ reactive-dict@1.1.0
 reactive-var@1.0.5
 reload@1.1.3
 retry@1.0.3
-reywood:iron-router-ga@0.5.3
+reywood:iron-router-ga@0.6.0
 routepolicy@1.0.5
 session@1.1.0
 spacebars@1.0.6
@@ -66,8 +66,8 @@ tracker@1.0.7
 twbs:bootstrap@3.3.4
 ui@1.0.6
 underscore@1.0.3
+underscorestring:underscore.string@3.0.3
 url@1.0.4
 webapp@1.2.0
 webapp-hashing@1.0.3
-wizonesolutions:underscore-string@1.0.0
-zimme:iron-router-active@1.0.1
+zimme:iron-router-active@1.0.4
