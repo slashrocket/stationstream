@@ -2,15 +2,19 @@
 <div class="well">
 <div id="cesiumContainer"></div>
   <script>
-     var viewer = new Cesium.Viewer('cesiumContainer');
+     var viewer = new Cesium.Viewer('cesiumContainer', {
+        sceneMode: Cesium.SceneMode.COLUMBUS_VIEW});
     //Create new CZML datasource
-    //var czmlStream = new Cesium.CzmlDataSource();
-    //var czmlStreamUrl = 'https://stationstream.space/api/cesium/latest';
+    var czmlStream = new Cesium.CzmlDataSource();
     var czml = czmlpacket();
-    viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
+    //viewer.dataSources.add(czmlStreamUrl.process(czml));
 
     //put the datasource into Cesium
-   // viewer.dataSources.add(czmlStreamUrl.process(JSON.parse(czmlUpdate.data))); 
+    setInterval(function () {
+      var czmlStream2 = new Cesium.CzmlDataSource();
+      viewer.dataSources.add(czmlStream2.process(czmlpacket())); 
+    }, 2000);
+    viewer.dataSources.add(czmlStream.load(czml)); 
     //viewer.dataSources.add(Cesium.CzmlDataSource.load('ISS.czml'));
   </script>
 </div>
