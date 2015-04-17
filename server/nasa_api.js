@@ -151,11 +151,6 @@ Meteor.methods({
         console.log("UNSUBSCRIBED from Solar");
       },
       onItemUpdate: Meteor.bindEnvironment(function(update) {
-        var itemcount = isssolar.find({}).count();
-        if (itemcount > 60) {
-          var oldest = isssolar.findOne({}, {sort: {time: 1}});
-          isssolar.remove(oldest._id);
-        };
         switch (update.getItemName()){
           case "P4000001":
             var valuea = update.getValue("Value")
