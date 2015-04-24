@@ -1,5 +1,5 @@
 function czmlpacket() {
-var positionx = isslocation.findOne({type: 'positionx'},{sort: {time : -1}});
+      var positionx = isslocation.findOne({type: 'positionx'},{sort: {time : -1}});
       var positiony = isslocation.findOne({type: 'positiony'},{sort: {time : -1}});
       var positionz = isslocation.findOne({type: 'positionz'},{sort: {time : -1}});
       var czml = [{
@@ -24,7 +24,10 @@ var positionx = isslocation.findOne({type: 'positionx'},{sort: {time : -1}});
           verticalOrigin: "CENTER"
         },
         position: {
-          cartesian: [Number(positionx.position) , Number(positiony.position) , Number(positionz.position)]
+          referenceFrame: "INERTIAL",
+          cartesian: [Number(positionx.position) , Number(positiony.position) , Number(positionz.position)],
+          interpolationAlgorithm: "LAGRANGE",
+        interpolationDegree: 5
         }
       }];
   return czml
