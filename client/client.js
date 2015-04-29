@@ -1,31 +1,26 @@
 Meteor.subscribe('isslocation');
 Meteor.subscribe('isscomputer');
-           //Subscribe to Solar Data
-        Meteor.subscribe('1Avoltage_isssolar'),
-        Meteor.subscribe('1Bvoltage_isssolar'),
-        Meteor.subscribe('2Avoltage_isssolar'),
-        Meteor.subscribe('2Bvoltage_isssolar'),
-        Meteor.subscribe('3Avoltage_isssolar'),
-        Meteor.subscribe('3Bvoltage_isssolar'),
-        Meteor.subscribe('4Avoltage_isssolar'),
-        Meteor.subscribe('4BAvoltage_isssolar'),
-        // Subscribe to Air and Water Data
-        Meteor.subscribe('issairwater_o2'),
-        Meteor.subscribe('issairwater_n2'),
-        Meteor.subscribe('issairwater_co2'),
-        Meteor.subscribe('issairwater_badh2o'),
-        Meteor.subscribe('issairwater_goodh2o'),
-        Meteor.subscribe('issairwater_cabinpressure'),
-        Meteor.subscribe('issairwater_cabintemp'),
-        // Subscribe to Location Data
-        Meteor.subscribe('isslocation_x'),
-        Meteor.subscribe('isslocation_y'),
-        Meteor.subscribe('isslocation_z')
-//Meteor.subscribe('isssolar');
-//Meteor.subscribe('issairwater');
-//Meteor.subscribe('issairwater_n2');
-//Meteor.subscribe('issairwater_co2');
-//Meteor.subscribe('issairwater_o2');
+//Subscribe to Solar Data
+Meteor.subscribe('1Avoltage_isssolar');
+Meteor.subscribe('1Bvoltage_isssolar');
+Meteor.subscribe('2Avoltage_isssolar');
+Meteor.subscribe('2Bvoltage_isssolar');
+Meteor.subscribe('3Avoltage_isssolar');
+Meteor.subscribe('3Bvoltage_isssolar');
+Meteor.subscribe('4Avoltage_isssolar');
+Meteor.subscribe('4BAvoltage_isssolar');
+// Subscribe to Air and Water Data
+Meteor.subscribe('issairwater_o2');
+Meteor.subscribe('issairwater_n2');
+Meteor.subscribe('issairwater_co2');
+Meteor.subscribe('issairwater_badh2o');
+Meteor.subscribe('issairwater_goodh2o');
+Meteor.subscribe('issairwater_cabinpressure');
+Meteor.subscribe('issairwater_cabintemp');
+// Subscribe to Location Data
+Meteor.subscribe('isslocation_x');
+Meteor.subscribe('isslocation_y');
+Meteor.subscribe('isslocation_z');
 
 Template.cesium.onRendered(function() {
   //var czml = czmlpacket();
@@ -42,16 +37,16 @@ Template.analytics.onRendered(function () {
   var chart3B = solarvoltage("3B", "#solarvoltagechart3B", "3Bvoltage");
   var chart4A = solarvoltage("4A", "#solarvoltagechart4A", "4Avoltage");
   var chart4B = solarvoltage("4B", "#solarvoltagechart4B", "4Bvoltage");
-  var charto2 = airwater("O2", "#o2", "o2")
-  var chartn2 = airwater("N2", "#n2", "n2")
-  var chartco2 = airwater("CO2", "#co2", "co2")
-  var chartbadh2o = airwater("Waste water", "#badh2o", "badh2o")
-  var chartgoodh2o = airwater("Drinkable water", "#goodh2o", "goodh2o")
-  var chartpressure = airwater("ISS Cabin pressure", "#cabinpressure", "cabinpressure")
-  var charttemp = airwater("ISS Cabin temp", "#cabintemp", "cabintemp")
-  var chartcommand = computer("ISS Computer command count", "#commandcount", "commandcount")
-  var chartdata = computer("ISS Computer data input count", "#datacount", "datacount")
-  var chartpc = computer("ISS PC Connection count", "#pccount", "pccount")
+  var charto2 = airwater("O2", "#o2", "o2");
+  var chartn2 = airwater("N2", "#n2", "n2");
+  var chartco2 = airwater("CO2", "#co2", "co2");
+  var chartbadh2o = airwater("Waste water", "#badh2o", "badh2o");
+  var chartgoodh2o = airwater("Drinkable water", "#goodh2o", "goodh2o");
+  var chartpressure = airwater("ISS Cabin pressure", "#cabinpressure", "cabinpressure");
+  var charttemp = airwater("ISS Cabin temp", "#cabintemp", "cabintemp");
+  var chartcommand = computer("ISS Computer command count", "#commandcount", "commandcount");
+  var chartdata = computer("ISS Computer data input count", "#datacount", "datacount");
+  var chartpc = computer("ISS PC Connection count", "#pccount", "pccount");
   
    //this.autorun(function(){
     // Highcharts.chart[0].series[0].setData(isssolar.findOne({type: '2Avoltage'},{sort: {time : -1}}).fetch());
