@@ -190,22 +190,22 @@ Meteor.methods({
           case "P6000008":
             var valueh = update.getValue("Value")
             //console.log("Z: " + value);
-            isssolar.insert({type: '2Brotate', value: valueh, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
+            isssolar.insert({type: '2Brotate', value: valueh, time: Date.now(), expires: new Date(new Date().getTime() + (36000000))});
             break;
           case "S0000003":
             var valuei = update.getValue("Value")
             //console.log("Z: " + value);
-            isssolar.insert({type: 'SARJStarRotate', value: valuei, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
+            isssolar.insert({type: 'SARJStarRotate', value: valuei, time: Date.now(), expires: new Date(new Date().getTime() + (36000000))});
             break;
           case "S0000004":
             var valuej = update.getValue("Value")
             //console.log("Z: " + value);
-            isssolar.insert({type: 'SARJPortRotate', value: valuej, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
+            isssolar.insert({type: 'SARJPortRotate', value: valuej, time: Date.now(), expires: new Date(new Date().getTime() + (36000000))});
             break;
           case "S4000001":
             var valuek = update.getValue("Value")
             //console.log("Z: " + value);
-            isssolar.insert({type: '1Avoltage', value: valuek, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
+            isssolar.insert({type: '1Avoltage', value: valuek, time: Date.now(), expires: new Date(new Date().getTime() + 36000000)});
             break;
           case "S4000004":
             var valuel = update.getValue("Value")
@@ -240,7 +240,7 @@ Meteor.methods({
           case "S6000008":
             var valuer = update.getValue("Value")
             //console.log("Z: " + value);
-            isssolar.insert({type: '1Brotate', value: valuer, time: Date.now()});
+            isssolar.insert({type: '1Brotate', value: valuer, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
         } 
       })
