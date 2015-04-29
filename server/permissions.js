@@ -1,3 +1,10 @@
+//Run every minute
+Meteor.setInterval(function() {
+    isslocation.remove({expires: { $gte: new Date() }});
+    isssolar.remove({expires: { $gte: new Date() }});
+    issairwater.remove({expires: { $gte: new Date() }});
+    isscomputer.remove({expires: { $gte: new Date() }});
+}, 60000);
 isslocation.deny({
   insert: function(userId, doc) {
       //Set expiry to 24 hours from now
