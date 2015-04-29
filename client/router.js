@@ -1,14 +1,4 @@
-Router.configure({
-  trackPageView: true,
-  waitOn: function(){
-    return [
-      Meteor.subscribe('issairwater_o2'),
-      Meteor.subscribe('issairwater_n2'),
-      Meteor.subscribe('issairwater_co2'),
-      Meteor.subscribe('issairwater')
-    ]
-  }
-});
+
 
 Router.map( function () {
   this.route('home', {

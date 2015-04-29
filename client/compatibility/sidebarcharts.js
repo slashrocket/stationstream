@@ -28,6 +28,7 @@ function drawAirChart(o2, n2, co2){
 
     var ctx = $("#air-chart").get(0).getContext("2d");
     var airChart = new Chart(ctx).Doughnut(data);
+    return airChart;
 }
 
 function drawWaterChart(goodh2o, badh2o){
@@ -50,7 +51,9 @@ function drawWaterChart(goodh2o, badh2o){
 
     var ctx = $("#water-chart").get(0).getContext("2d");
     var waterChart = new Chart(ctx).Doughnut(data);
+    return waterChart;
 }
+
 
 /*
     var options = {

@@ -65,8 +65,22 @@ Template.sidebar.onRendered(function () {
   // Tracker.autorun(function(){
   // 	airChart.update();
   // })
-  var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}});
-  console.log(Template.instance().subscriptionsReady());
+  var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
+  var n2 = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
+  var co2 = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
+  var goodh2o = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
+  var badh2o = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+  var airChart = drawAirChart( o2, n2, co2 );
+  var waterChart = drawWaterChart( goodh2o, badh2o );
+   setInterval(function () {
+        airChart.segments[0].value = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
+        airChart.segments[1].value = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
+        airChart.segments[2].value = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
+        airChart.update();
+        waterChart.segments[0].value = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
+        waterChart.segments[1].value = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+        waterChart.update();
+    }, 5000);
 });
 
 Template.sidebar.onCreated(function () {
@@ -78,7 +92,7 @@ Template.sidebar.onCreated(function () {
 });
 
 Template.sidebar.helpers({
-	o2: function() {
+    o2: function() {
     return issairwater.findOne({type: 'o2'},{sort: {time : -1}});
   },
   n2: function() {
