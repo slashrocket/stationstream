@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-  Meteor.call("lightstreamerConnect")
+  Meteor.call("lightstreamerConnect");
   Restivus.configure({
     useAuth: false,
     prettyJson: true
@@ -17,8 +17,8 @@ Meteor.startup(function () {
       if (positionx && positiony && positionz){
         return {status: 'success', data: telemetry};
       }else{
-        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}}
-      };
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}};
+      }
     }
   });
   Restivus.addRoute('cesium/latest', {authRequired: false}, {
@@ -54,8 +54,8 @@ Meteor.startup(function () {
       if (positionx && positiony && positionz){
         return czml;
       }else{
-        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}}
-      };
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}};
+      }
     }
   });
   Restivus.addRoute('issairwater/latest', {authRequired: false}, {
@@ -71,25 +71,25 @@ Meteor.startup(function () {
         o2: o2.value,
         n2: n2.value,
         co2: co2.value
-      }
+      };
       var h2o = {
         bad: badh2o.value,
         good: goodh2o.value
-      }
+      };
       var cabin = {
         pressure: cabinpressure.value,
         temp: cabintemp.value
-      }
+      };
       var airwater = {
         air: air,
         h2o: h2o,
         cabin: cabin
-      }
+      };
       if (o2 && n2 && co2 && badh2o && goodh2o && cabinpressure && cabintemp){
         return {status:'success', data: airwater};
       }else{
-        return {statusCode: 404, body: {status: 'fail', message: 'Record not found'}}
-      };
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found'}};
+      }
     }
   });
   Restivus.addRoute('isscomputer/latest', {authRequired: false}, {
@@ -102,12 +102,12 @@ Meteor.startup(function () {
         commandcount: commandcount.value,
         datacount: datacount.value,
         pccount: pccount.value
-      }
+      };
       if (commandcount && datacount && pccount){
         return {status: 'success', data: computerdata};
       }else{
         return {statusCode: 404, body: {status: 'fail', message: 'Record not found'}};
-      };
+      }
     }
   });
   Restivus.addRoute('isssolar/latest', {authRequired: false}, {
@@ -137,7 +137,7 @@ Meteor.startup(function () {
         rotate: rotate2A.value
       };
       // 2B Data
-      var voltage2A = isssolar.findOne({type: '2Bvoltage'},{sort: {time : -1}});
+      var voltage2B = isssolar.findOne({type: '2Bvoltage'},{sort: {time : -1}});
       var rotate2B = isssolar.findOne({type: '2Brotate'},{sort: {time : -1}});
       var Data_2B = {
         voltage: voltage2A.value,
@@ -186,8 +186,8 @@ Meteor.startup(function () {
       if (SARJStarRotate && SARJPortRotate){
         return {status: 'success', data: solardata};
       }else{
-        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}}
-      };
+        return {statusCode: 404, body: {status: 'fail', message: 'Record not found.'}};
+      }
     }
   });
 });

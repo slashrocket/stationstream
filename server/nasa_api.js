@@ -56,17 +56,17 @@ Meteor.methods({
       onItemUpdate: Meteor.bindEnvironment(function(update) {
         switch (update.getItemName()){
           case "USLAB000032":
-            var valuex = update.getValue("Value")
+            var valuex = update.getValue("Value");
             //console.log("X: " + value);
             isslocation.insert({type: 'positionx', position: valuex, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "USLAB000033":
-            var valuey = update.getValue("Value")
+            var valuey = update.getValue("Value");
             //console.log("Y: " + value);
             isslocation.insert({type: 'positiony', position: valuey, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "USLAB000034":
-            var valuez = update.getValue("Value")
+            var valuez = update.getValue("Value");
             //console.log("Z: " + value);
             isslocation.insert({type: 'positionz', position: valuez, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
@@ -84,31 +84,31 @@ Meteor.methods({
       onItemUpdate: Meteor.bindEnvironment(function(update) {
         switch (update.getItemName()){
           case "NODE3000001":
-            var valuea = update.getValue("Value")
+            var valuea = update.getValue("Value");
             issairwater.insert({type: 'o2', value: valuea, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "NODE3000002":
-            var valueb = update.getValue("Value")
+            var valueb = update.getValue("Value");
             issairwater.insert({type: 'n2', value: valueb, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "NODE3000003":
-            var valuec = update.getValue("Value")
+            var valuec = update.getValue("Value");
             issairwater.insert({type: 'co2', value: valuec, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "NODE3000008":
-            var valued = update.getValue("Value")
+            var valued = update.getValue("Value");
             issairwater.insert({type: 'badh2o', value: valued, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "NODE3000009":
-            var valuee = update.getValue("Value")
+            var valuee = update.getValue("Value");
             issairwater.insert({type: 'goodh2o', value: valuee, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "USLAB000058":
-            var valuef = update.getValue("Value")
+            var valuef = update.getValue("Value");
             issairwater.insert({type: 'cabinpressure', value: valuef, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "USLAB000059":
-            var valueg = update.getValue("Value")
+            var valueg = update.getValue("Value");
             issairwater.insert({type: 'cabintemp', value: valueg, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
         } 
@@ -125,17 +125,17 @@ Meteor.methods({
       onItemUpdate: Meteor.bindEnvironment(function(update) {
         switch (update.getItemName()){
           case "USLAB000082":
-            var valuea = update.getValue("Value")
+            var valuea = update.getValue("Value");
             //console.log("X: " + value);
             isscomputer.insert({type: 'commandcount', value: valuea, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "USLAB000083":
-            var valueb = update.getValue("Value")
+            var valueb = update.getValue("Value");
             //console.log("Y: " + value);
             isscomputer.insert({type: 'datacount', value: valueb, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "USLAB000087":
-            var valuec = update.getValue("Value")
+            var valuec = update.getValue("Value");
             //console.log("Z: " + value);
             isscomputer.insert({type: 'pccount', value: valuec, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
@@ -153,92 +153,92 @@ Meteor.methods({
       onItemUpdate: Meteor.bindEnvironment(function(update) {
         switch (update.getItemName()){
           case "P4000001":
-            var valuea = update.getValue("Value")
+            var valuea = update.getValue("Value");
             //console.log("2Avoltage: " + valuea);
             isssolar.insert({type: '2Avoltage', value: valuea, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P4000004":
-            var valueb = update.getValue("Value")
+            var valueb = update.getValue("Value");
             //console.log("Y: " + value);
             isssolar.insert({type: '4Avoltage', value: valueb, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P4000007":
-            var valuec = update.getValue("Value")
+            var valuec = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '2Arotate', value: valuec, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P4000008":
-            var valued = update.getValue("Value")
+            var valued = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '4Arotate', value: valued, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P6000001":
-            var valuee = update.getValue("Value")
+            var valuee = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '4Bvoltage', value: valuee, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P6000004":
-            var valuef = update.getValue("Value")
+            var valuef = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '2Bvoltage', value: valuef, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P6000007":
-            var valueg = update.getValue("Value")
+            var valueg = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '4Brotate', value: valueg, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "P6000008":
-            var valueh = update.getValue("Value")
+            var valueh = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '2Brotate', value: valueh, time: Date.now(), expires: new Date(new Date().getTime() + (36000000))});
             break;
           case "S0000003":
-            var valuei = update.getValue("Value")
+            var valuei = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: 'SARJStarRotate', value: valuei, time: Date.now(), expires: new Date(new Date().getTime() + (36000000))});
             break;
           case "S0000004":
-            var valuej = update.getValue("Value")
+            var valuej = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: 'SARJPortRotate', value: valuej, time: Date.now(), expires: new Date(new Date().getTime() + (36000000))});
             break;
           case "S4000001":
-            var valuek = update.getValue("Value")
+            var valuek = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '1Avoltage', value: valuek, time: Date.now(), expires: new Date(new Date().getTime() + 36000000)});
             break;
           case "S4000004":
-            var valuel = update.getValue("Value")
+            var valuel = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '3Avoltage', value: valuel, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "S4000007":
-            var valuem = update.getValue("Value")
+            var valuem = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '1Arotate', value: valuem, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "S4000008":
-            var valuen = update.getValue("Value")
+            var valuen = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '3Arotate', value: valuen, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "S6000001":
-            var valueo = update.getValue("Value")
+            var valueo = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '3Bvoltage', value: valueo, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "S6000004":
-            var valuep = update.getValue("Value")
+            var valuep = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '1Bvoltage', value: valuep, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "S6000007":
-            var valueq = update.getValue("Value")
+            var valueq = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '3Brotate', value: valueq, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;
           case "S6000008":
-            var valuer = update.getValue("Value")
+            var valuer = update.getValue("Value");
             //console.log("Z: " + value);
             isssolar.insert({type: '1Brotate', value: valuer, time: Date.now(), expires: new Date(new Date().getTime() + (36000000*3))});
             break;

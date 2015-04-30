@@ -30,5 +30,5 @@ function czmlpacket() {
         interpolationDegree: 5
         }
       }];
-  return czml
+  return czml;
 }
