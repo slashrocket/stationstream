@@ -140,7 +140,7 @@ Meteor.startup(function () {
       var voltage2B = isssolar.findOne({type: '2Bvoltage'},{sort: {time : -1}});
       var rotate2B = isssolar.findOne({type: '2Brotate'},{sort: {time : -1}});
       var Data_2B = {
-        voltage: voltage2A.value,
+        voltage: voltage2B.value,
         rotate: rotate2B.value
       };
       // 3A Data
