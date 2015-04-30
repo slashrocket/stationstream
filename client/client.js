@@ -59,28 +59,48 @@ Template.analytics.onRendered(function () {
 });
 
 Template.sidebar.onRendered(function () {
-  // Draw the initial air data chart
-  //drawAirChart();
-  // Detect backend data changes and instruct Chart.js to rerender the chart
-  // Tracker.autorun(function(){
-  // 	airChart.update();
-  // })
+  setTimeout(function(){
   var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
   var n2 = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
   var co2 = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
   var goodh2o = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
   var badh2o = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
-  var airChart = drawAirChart( o2, n2, co2 );
-  var waterChart = drawWaterChart( goodh2o, badh2o );
+  window.airChart = drawAirChart( o2, n2, co2 );
+  window.waterChart = drawWaterChart( goodh2o, badh2o );
+  }, 300);
    setInterval(function () {
-        airChart.segments[0].value = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
-        airChart.segments[1].value = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
-        airChart.segments[2].value = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
-        airChart.update();
-        waterChart.segments[0].value = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
-        waterChart.segments[1].value = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
-        waterChart.update();
-    }, 5000);
+        if(typeof airChart === 'undefined'){
+            var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
+            var n2 = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
+            var co2 = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
+            window.airChart = drawAirChart( o2, n2, co2 );
+        };
+        if(typeof waterChart === 'undefined'){
+            var goodh2o = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
+            var badh2o = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+            window.waterChart = drawWaterChart( goodh2o, badh2o );
+        };
+        if(issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value != airChart.segments[0].value) {
+            airChart.segments[0].value = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
+            airChart.update();
+        };
+        if(airChart.segments[1].value != issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value) {
+            airChart.segments[1].value = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
+            airChart.update();
+        };
+        if(airChart.segments[2].value != issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value) {
+            airChart.segments[2].value = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
+            airChart.update();
+        }
+        if(waterChart.segments[0].value != issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value) {
+            waterChart.segments[0].value = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
+            waterChart.update();
+        }
+        if(waterChart.segments[1].value != issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value) {
+            waterChart.segments[1].value = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+            waterChart.update();
+        }
+    }, 2000);
 });
 
 Template.sidebar.onCreated(function () {
