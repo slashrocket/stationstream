@@ -60,47 +60,47 @@ Template.analytics.onRendered(function () {
 
 Template.sidebar.onRendered(function () {
   setTimeout(function(){
-  var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
-  var n2 = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
-  var co2 = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
-  var goodh2o = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
-  var badh2o = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+  var o2 = Number(issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value).toFixed(2);
+  var n2 = Number(issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value).toFixed(2);
+  var co2 = Number(issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value).toFixed(2);
+  var goodh2o = Number(issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value).toFixed(2);
+  var badh2o = Number(issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value).toFixed(2);
   window.airChart = drawAirChart( o2, n2, co2 );
   window.waterChart = drawWaterChart( goodh2o, badh2o );
   }, 300);
    setInterval(function () {
         if(typeof airChart === 'undefined'){
-            var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
-            var n2 = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
-            var co2 = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
+            var o2 = Number(issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value).toFixed(2);
+            var n2 = Number(issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value).toFixed(2);
+            var co2 = Number(issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value).toFixed(2);
             window.airChart = drawAirChart( o2, n2, co2 );
         };
         if(typeof waterChart === 'undefined'){
-            var goodh2o = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
-            var badh2o = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+            var goodh2o = Number(issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value).toFixed(2);
+            var badh2o = Number(issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value).toFixed(2);
             window.waterChart = drawWaterChart( goodh2o, badh2o );
         };
-        var o2 = issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value;
+        var o2 = Number(issairwater.findOne({type: 'o2'},{sort: {time: -1}}).value).toFixed(2);
         if(airChart.segments[0].value != o2) {
             airChart.segments[0].value = o2;
             airChart.update();
         };
-        var n2 = issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value;
+        var n2 = Number(issairwater.findOne({type: 'n2'},{sort: {time: -1}}).value).toFixed(2);
         if(airChart.segments[1].value != n2) {
             airChart.segments[1].value = n2;
             airChart.update();
         };
-        var co2 = issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value;
+        var co2 = Number(issairwater.findOne({type: 'co2'},{sort: {time: -1}}).value).toFixed(2);
         if(airChart.segments[2].value != co2) {
             airChart.segments[2].value = co2;
             airChart.update();
         }
-        var goodh2o = issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value;
+        var goodh2o = Number(issairwater.findOne({type: 'goodh2o'},{sort: {time: -1}}).value).toFixed(2);
         if(waterChart.segments[0].value != goodh2o) {
             waterChart.segments[0].value = goodh2o;
             waterChart.update();
         }
-        var badh2o = issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value;
+        var badh2o = Number(issairwater.findOne({type: 'badh2o'},{sort: {time: -1}}).value).toFixed(2);
         if(waterChart.segments[1].value != badh2o) {
             waterChart.segments[1].value = badh2o;
             waterChart.update();
