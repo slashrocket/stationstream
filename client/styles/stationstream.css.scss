@@ -27,11 +27,23 @@ $accenttext2: #D3FEFA;
 }
 
 .boxshadow {
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(55, 55, 55, 0.48);
-    -moz-box-shadow:    2px 2px 5px 0px rgba(55, 55, 55, 0.48);
-    box-shadow:         2px 2px 5px 0px rgba(55, 55, 55, 0.48);
+    -webkit-box-shadow: 2px 2px 5px 10px rgba(55, 55, 55, 0.48);
+    -moz-box-shadow:    2px 2px 5px 10px rgba(55, 55, 55, 0.48);
+    box-shadow:         2px 2px 5px 10px rgba(55, 55, 55, 0.48);
 }
 
+/* for home page */
+.jumbotron #commandcount rect {
+    fill: none !important;
+}
+
+.jumbotron #commandcount .highcharts-title {
+    font-size: 0px !important;
+}
+
+.jumbotron #commandcount .highcharts-legend {
+    font-size: 0px !important;
+}
 
 body,html,.row-offcanvas {
   height:100%;
@@ -41,6 +53,10 @@ body {
   padding-top: 50px;
   overflow-x: hidden;
   background-color: $background;
+    background-image: url('edges.png');
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .navbar-nav {
@@ -51,7 +67,7 @@ body {
   width: inherit;
   min-width: 220px;
   max-width: 220px;
-  background-color: $background;
+  background-color: rgba(75, 75, 75, 0.1);
   float: right;
   height:100%;
   position:relative;
@@ -137,7 +153,7 @@ body {
 }
 
 .jumbotron {
-    background-color: rgba(55, 55, 55, 0.52);
+    background-color: rgba(60, 60, 60, 0.4);
     margin-top: 30px;
     border-radius: 10px !important;
 }

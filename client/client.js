@@ -23,6 +23,7 @@ Meteor.subscribe('isslocation_y'),
 Meteor.subscribe('isslocation_z')
         
 Template.home.onRendered(function() {
+  var chartcommand = computer("ISS Computer command count", "#commandcount", "commandcount")
 });
 
 Template.analytics.onRendered(function () {
