@@ -1,0 +1,95 @@
+.circle{
+display:inline-block;
+position:absolute;
+top:0px;
+left:0px;
+right:0px;
+bottom:0px;
+margin:auto;
+}
+.centre{
+height: 10px;
+border-style: solid;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+border-color: transparent #2980B9;
+border-radius: 50%;
+animation: 7s linear 0s normal none infinite running spinner-rotate;
+width: 10px;
+border-width: 10px;
+    z-index: -1;
+}
+.inner{
+border-width: 20px;
+border-style: solid;
+-moz-border-top-colors: none;
+-moz-border-right-colors: none;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+border-image: none;
+border-color: #34495E transparent;
+width: 70px;
+height: 70px;
+border-radius: 50%;
+animation: 10s linear 0s normal none infinite running spinner-rotate;
+    z-index: -1;
+}
+.middle{
+border:5px solid;
+border-color: transparent #1DAEBE #1DAEBE;
+width:150px;
+height:150px;
+border-radius:50%;
+-webkit-animation:spinner-rotate 5s 0s linear infinite;
+-moz-animation:spinner-rotate 5s 0s linear infinite;
+    z-index: -1;
+}
+.outer{
+    border-width: 10px;
+    border-style: solid;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-color: transparent #222;
+    border-radius: 50%;
+    animation: 12s linear 0s normal none infinite running spinner-rotate;
+    width: 250px;
+    height: 250px;
+    z-index: -1;
+}
+
+.circlecontainer {
+    background-image: url('techy-circle.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
+@-webkit-keyframes spinner-rotate{
+0%{
+-webkit-transform:rotateZ(0deg);
+-moz-transform:rotateZ(0deg);
+transform:rotateZ(0deg)
+}100%{
+-webkit-transform:rotateZ(360deg);
+-moz-transform:rotateZ(360deg);
+transform:rotateZ(360deg)
+}
+}
+@-moz-keyframes spinner-rotate{
+0%{
+-webkit-transform:rotateZ(0deg);
+-moz-transform:rotateZ(0deg);
+transform:rotateZ(0deg)
+}100%{
+-webkit-transform:rotateZ(360deg);
+-moz-transform:rotateZ(360deg);
+transform:rotateZ(360deg)
+}
+}
