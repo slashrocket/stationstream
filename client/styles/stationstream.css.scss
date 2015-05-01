@@ -1,4 +1,32 @@
-/* CSS declarations go here */
+/* font imports */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,200,100,700,900);
+
+
+/* color pallete */
+$background: #101312;
+$background2: #177A86;
+$backgroundaccent: #1D433C;
+$backgroundaccent2: #495856;
+$primarytext: #1DAEBE;
+$accenttext: #ABFAF3;
+$accenttext2: #D3FEFA;
+
+
+.primarytext {
+    color: $primarytext !important;
+}
+
+.accenttext {
+    font-weight: 200;
+    color: $accenttext !important;
+}
+
+
+.primaryshadow {
+    text-shadow: 0px 0px 12px $background2;
+}
+
+
 body,html,.row-offcanvas {
   height:100%;
 }
@@ -6,6 +34,7 @@ body,html,.row-offcanvas {
 body {
   padding-top: 50px;
   overflow-x: hidden;
+  background-color: $background;
 }
 
 .navbar-nav {
@@ -16,12 +45,13 @@ body {
   width: inherit;
   min-width: 220px;
   max-width: 220px;
-  background-color:#f5f5f5;
+  background-color: $background;
   float: right;
   height:100%;
   position:relative;
   overflow-y:auto;
   overflow-x:hidden;
+  color: #eaeaea;
 }
 
 #main {
@@ -91,4 +121,25 @@ body {
 .large-icon:before {
   font-size: 200px;
   display: inline-block;
+}
+
+.jumbotron h1 {
+    margin-top: -35px;
+    font-weight: 300;
+    border-bottom: thin solid;
+    width: 45%;
+}
+
+.jumbotron {
+    background-color: $background;
+    margin-top: 30px;
+    border-radius: 25% !important;
+}
+
+.jumbotron a {
+    color: $background2 !important;
+}
+
+.jumbotron a:hover {
+    color: $accenttext !important;
 }
