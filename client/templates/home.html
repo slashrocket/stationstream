@@ -1,5 +1,5 @@
 <template name="home">
-<div class="jumbotron boxshadow circlecontainer">
+<div class="jumbotron boxshadow circlecontainer" align="center">
     <div class="circle centre"></div>
     <div class="inner circle"></div>
     <div class="middle circle"></div>
@@ -8,20 +8,11 @@
 		<h1 class="accenttext primaryshadow">StationStream</h1>
 		<h2 class="accenttext primaryshadow">Live Data from the International Space Station</h2>
 	</div>
-	<br /><br /><br />
-	<div class="row">
-		<div class="col-md-4 team" align="center">
-			<div class="row"><a href="/cesium"><i class="large-icon fa fa-globe"></i></a></div>
-			<div class="row"><h4 class="accenttext primaryshadow">Track the ISS in Real Time</h4></div>
-		</div>
-		<div class="col-md-4 team" align="center">
-			<div class="row"><a href="/analytics"><i class="large-icon fa fa-database"></i></a></div>
-			<div class="row"><h4 class="accenttext primaryshadow">View Live Data from the ISS</h4></div>
-		</div>
-		<div class="col-md-4 team" align="center">
-			<div class="row"><a href="/api"><i class="large-icon fa fa-cloud-download"></i></a></div>
-			<div class="row"><h4 class="accenttext primaryshadow">Access Our API</h4></div>
-		</div>
+	<br /><br />
+	<div class="list-group homelist">
+		<a href="/cesium" class="list-group-item"><h4 align="center" class="accenttext primaryshadow"><i class="fa-4x fa fa-globe" style="margin-right: 10px;"></i>Track the ISS in Real Time</h4></a>
+		<a href="/analytics" class="list-group-item"><h4 align="center" class="accenttext primaryshadow"><i class="fa-4x fa fa-database" style="margin-right: 10px;"></i>View Live Data from the ISS</h4></a>
+		<a href="/api" class="list-group-item"><h4 align="center" class="accenttext primaryshadow"><i class="fa-4x fa fa-cloud-download" style="margin-right: 10px;"></i>Access Our API</h4></a>
 	</div>
 	<div id="commandcount" style="min-width: 350px; height: 200px; margin: 0 auto; background: transparent !important;"></div>
 </div>

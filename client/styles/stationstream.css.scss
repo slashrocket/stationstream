@@ -45,6 +45,22 @@ $accenttext2: #D3FEFA;
     font-size: 0px !important;
 }
 
+.homelist {
+    width: 65%;
+}
+
+.homelist .list-group-item {
+    background: none !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.homelist .list-group-item:hover {
+    background-color: rgba(75, 75, 75, 0.2) !important;
+}
+
+
+
 body,html,.row-offcanvas {
   height:100%;
 }

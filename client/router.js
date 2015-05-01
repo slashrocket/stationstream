@@ -2,6 +2,12 @@ Router.map( function () {
   this.route('home', {
     path: '/',
     template: 'home',
+    waitOn: function(){
+      return [
+        //Subscribe to Solar Data
+        Meteor.subscribe('isscomputer'),
+      ];
+    }
   });
   this.route('about', {
     path: '/about',
