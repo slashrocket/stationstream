@@ -1,6 +1,6 @@
 # [StationStream](https://stationstream.space)
 
-[![Learn Web Dev - Slack](https://learnwebdev-slackin.herokuapp.com/badge.svg)](https://learnwebdev.github.io)
+[![slashrocket - Slack](https://slashrocket-slackin.herokuapp.com/badge.svg)](https://slashrocket.github.io)
 
 ### [International Space Apps Challenge](https://2015.spaceappschallenge.org/project/stationstream/) 2015 Entry
 
